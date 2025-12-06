@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asigment1</title>
+
+  <style>
+    h2 ,h1 , #p1 {
+      color:cornflowerblue;
+    }   
+
+    #h31 {
+      background-color: cadetblue;
+    }
+    .li1 {
+      color: blue;
+      text-decoration: underline;
+    }
+    th {
+      background-color:royalblue;
+      color: white;
+    }
+
+  </style>
+
+</head>
+<body>
+ <center><h1> Abdalrahman Emad Portfolio </h1></center>
+  <center><p id="p1"> professional wep develpoer </p></center>
+  <h2>About Me</h2>
+ <center> 
+  <table width="90%">
+    <tr>
+      <td><img src="images/photo_2025-02-17_04-45-26.jpg" alt="Abalrahman Photo" title="there is Abdo Photo"
+         width="40%"> <br>
+
+     <a href="https://www.facebook.com/abdalrahman.emad.50/">  <img src="images/social_13480297.png"
+         alt="" width="10%"> </a>
+
+     <img src="images/social_13480311.png" alt=""width="10%">
+
+       <a href="https://www.instagram.com/abdalrahmanemad2004?igsh=NjAxaHkyYmkxbW5t"> 
+         <img src="images/social_13480280.png"
+         alt=""width="10%"></a>
+
+       <a href="https://github.com/AbdalrahmanEmad158">  <img src="images/github_1051326.png"
+         alt="" width="10%"> </a>
+
+    </td>
+
+
+      <td>
+        <p>Hello! My name is Abdalrahman Emad, and I am a passionate web developer with a knack for creating dynamic and 
+          user-friendly websites. With a strong foundation in HTML, CSS, and JavaScript, I specialize in front-end development 
+          and have experience working with various frameworks and libraries. <br> <br>
+        In addition to my technical skills  I am a creative problem solver who enjoys collaborating 
+         with clients to bring their visions to life. Whether it's building a responsive website from scratch or 
+         enhancing an existing one, I am dedicated to delivering high-quality results that exceed expectations.
+       </p>
+       <h3 id="h31">Skills</h3>
+        <ul>
+          <li class="li1">HTML5</li>
+          <li class="li1">css3</li>
+          <li class="li1">JavaScript</li>
+          <li class="li1">ReactJs</li>
+          </ul>
+          
+      </td>
+    </tr>
+  </table>
+  </center>
+
+  <br> <br> <br>
+  <h2>Experiences TimeLine</h2> 
+  
+  <center><h3>professional Experiences OverView</h3></center>
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Role</th>
+            <th scope="col">Key Achievment</th>
+            <th scope="col">Dates</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">teachCrop solutions</td>
+           
+            <td  rowspan="2"><img src="images/github_1051326.png" alt="teachCrop solutions logo" title="teachCrop solutions Logo"
+                 width="50%"></td> 
+            
+            <td>senior Full Stack Developer</td>
+            <td>
+                <ul>
+                <li>Led the development of multiple web applications using React and Node.js, improving user engagement by 30%.</li>
+                <li>Optimized existing codebases, reducing load times by 25% and enhancing overall performance.</li>
+                <li>Mentored junior developers, fostering a collaborative and growth-oriented team environment.</li>
+            </ul>
+        </td>
+            <td>Jan 2023 - Present</td>
+        </tr>
+        <tr>
+            <td>Full Stack Developer</td>
+            <td>
+                <ul>
+                <li>Developed and maintained web applications using HTML, CSS, JavaScript, and React, resulting in a 15% increase in user retention.</li>
+                <li>Worked closely with designers to implement responsive designs, ensuring a seamless user experience across   </li>
+                </ul>
+            </td>
+            <td>2021 - 2023</td>
+        </tr>
+        <tr>
+            <td>Digital agerency pro</td>
+            <td><img src="images/social_13480297.png" alt="Digital agerency pro logo" title="Digital agerency pro Logo"
+                 width="25%"></td>
+                 <td>front end developer</td>
+                 <td>
+                   <ul>
+                    <li>Collaborated with cross-functional teams to design and implement user-friendly web interfaces using HTML, CSS, and JavaScript.</li>
+                    <li>Optimized website performance, resulting in a 20% reduction in page load times and improved SEO rankings.</li>
+                    
+                   </ul>
+                 </td>
+                 <td>2019 - 2020</td>
+        </tr>
+
+
+           <tr>
+            <td>wep Disign Studio</td>
+            <td><img src="images/github_1051326.png" alt="wep Disign Studio logo" title="wep Disign Studio Logo"
+                 width="25%"></td>
+                 <td>front end developer</td>
+                 <td>
+                   <ul>
+                    <li>Collaborated with cross-functional teams to design and implement user-friendly web interfaces using HTML, CSS, and JavaScript.</li>
+                    <li>Optimized website performance, resulting in a 20% reduction in page load times and improved SEO rankings.</li>
+                    
+                   </ul>
+                 </td>
+                 <td>2019 - 2020</td>
+        </tr>
+
+        <tr>
+            <td colspan="5"> total experinces 5+ in web develpment </td>
+        </tr>
+</table> <br> <br>
+<h2>contact me</h2>
+<br> 
+<p>fell free to reach out tome using the form below</p>
+<br>
+
+
+     <form action="TagetPage_Koko.nodejs" >
+        <fieldset width="100%">
+             <table  width="100%">
+            <legend>Personal Information</legend>
+           
+                <tr>
+                    <td><label for="fname">First Name:</label></td>
+                    <td><input type="text" id="fname" name="fname" required></td>
+                
+                    <td><label for="lname">Last Name:</label></td>
+                    <td><input type="text" id="lname" name="lname" required></td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+            
+                    <td><label for="phone">phone number:</label></td>
+                    <td><input type="tel" name="phone" id="phone" required></td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="prefare Metting Date">prefare Metting Date</label></td>
+                    <td><input type="date" name="prefare Metting Date" id="prefare Metting Date"></td>
+
+                    <td><label for="best time to contact">Best Time To contact</label></td>
+                    <td><input type="time" name="best time to contact" id="best time to contact"></td>
+                </tr>
+                </table>
+        </fieldset>
+        
+        <br>
+
+           <fieldset width="100%">
+             <table  width="100%">
+            <legend>Project Deatails</legend>
+           
+                <tr>
+                    <td><label for="Project Type">Project Type:</label></td>
+                    <td><input type="text" id="Project Type" name="Project Type" required></td>
+                
+                    <td><label for="message">Project Description:</label></td>
+                    <td><textarea id="message" name="message" rows="4" ></textarea></td>
+                </tr>
+
+
+                <tr>
+                  <td><p>Budget Range</p></td>
+                  <td> <p>service required (cheack al that apply)</p></td>
+                </tr>
+
+                <tr>
+                    
+                 <td>
+                     <input type="radio" name="Budget Range" id="under5000"  value="under5000" checked>
+                    <label for="under5000">under 5000</label>
+                </td>
+
+                 <td>
+                     <input type="checkbox" name="service required" id="Ui/Ux Design"  value="Ui/Ux Design" checked>
+                    <label for="Ui/Ux Design">Ui/Ux Design</label>
+                </td>
+                </tr>
+
+                <tr>
+                   <td>
+                    <input type= "radio" name="Budget Range" id="5000 - 10000"  value="5000 - 10000" >
+                    <label for="5000 - 10000">5000 - 10000</label>
+                </td>
+
+                   <td>
+                     <input type="checkbox" name="service required" id="Front-End Development"  value="Front-End Development" >
+                    <label for="Front-End Development">Front-End Development</label>
+                </td>
+                </tr>
+
+                 <tr>
+                   <td>
+                    <input type= "radio" name="Budget Range" id="10000 - 25000"  value="10000 - 25000" >
+                    <label for="10000 - 25000">10000 - 25000</label>
+                </td>
+                
+                     <td>
+                        <input type="checkbox" name="service required" id="Back-End Development"  value="Back-End Development" >
+                      <label for="Back-End Development">Back-End Development</label>
+                      </td>
+                </tr>
+
+                   <tr>
+                   <td>
+                    <input type= "radio" name="Budget Range" id="over 25000"  value="over 25000" >
+                    <label for="over 25000">over 25000</label></td>
+                        <td>
+                            <input type="checkbox" name="service required" id="housting & Development"  value="housting & Development" 
+                        <label for="housting & Development">housting & Development</label>
+                        </td>
+                </tr>
+
+                <tr>
+                <td>
+
+                </td>
+                <td>
+                    <input type="checkbox" name="service required" id="maintenance and support"  value="maintenance and support" >
+                    <label for="maintenance and support">maintenance and support</label>
+                </td>
+               </tr>
+                 <tr>
+                   <td>
+                    <label for="How Did you here about me">How Did you here about me?</label>
+                    <select name="How Did you here about me" id="How Did you here about me">
+                        <option selected hidden disabled value=""> -- select source  </option>
+                        <option value="opt1">option1</option>
+                        <option value="opt2">option2</option>
+                        <option value="opt3">option3</option>
+                    </select>
+                    </td>
+                </tr>
+           
+          
+            
+                </tr>
+
+
+                <tr>
+                   
+                </table>
+        </fieldset>
+        <button type="submit" style="background-color: blue; color: white;"> send Message </button>
+        <button type="reset" style="background-color: red; color: white;" > clear form </button>
+    </form>
+</body>
+</html>

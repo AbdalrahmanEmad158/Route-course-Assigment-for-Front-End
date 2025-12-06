@@ -1,0 +1,278 @@
+
+:root {
+    --primary-color: #f75c2e; 
+    --background-color: #fcf6ef; 
+    --highlight-bg: #fff8f0; 
+    --star-color: #ffc107;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: sans-serif;
+    
+}
+
+
+/* --- Header Styling --- */
+
+.logoContainer {
+    background-color: var(--primary-color);
+    width: 33px ;
+    height: 33px;
+  
+}
+.logo-subtitle {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.profile-avatar:hover {
+   cursor: pointer;
+}
+
+
+nav .icon-link {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-left: 15px;
+    transition: color 0.2s;
+    text-decoration: none;
+    
+}
+.icon-link:hover {
+    color: var(--primary-color);
+}
+
+/* --- Main Card Styling --- */
+.recipe-card {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+   
+}
+
+/* --- Time/Servings Overlay Box --- */
+.time-overlay {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.time-item {
+    text-align: center;
+}
+.time-icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+.time-icon.redc
+{
+    color: #FB2C36;
+}
+.time-icon.bluec
+{
+    color: #2B7FFF;
+}
+.time-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+.time-value {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.rating-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+    font-weight: bold;
+    top:30px;
+    
+}
+.rating-box .fa-star {
+    color: var(--star-color);
+    margin-right: 5px;
+}
+/* --- Recipe Details Styling --- */
+.details-col {
+    padding: 40px;
+}
+
+.tag {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-weight: 500;
+}
+.tag-Easy{
+    background-color: #e6f7e9;
+    color: #38761d;
+}
+.tag-American {
+    background-color: #DBEAFE;
+    color: #1E50E7;
+}
+.recipe-title {
+    font-weight: 800;
+    margin-top: 10px;
+}
+.recipe-description {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+.bgu
+{
+    background-color: #FFD7A8;
+    color:#F54A00 ;
+    text-decoration: none;
+}
+
+.condition
+{
+    background-color: #FEF2F2;
+    border-left: 2px solid red;
+}
+
+.condition h5{
+    color: #9F0719;
+}
+
+.condition p{
+    color: #E7000B;
+}
+.condition i{
+    color: #E7000B;
+}
+
+/* --- Tab Styling (Custom Look) --- */
+.nav-tabs {
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 20px;
+}
+.nav-tabs .nav-link {
+    border: none;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin-right: 10px;
+    transition: color 0.2s;
+}
+.nav-tabs .nav-link:hover {
+    color: #364153;
+}
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    background-color: transparent;
+}
+
+/* --- List Styling (Instructions/Ingredients - The distinct numbered boxes) --- */
+.custom-list-item {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    list-style: none;
+    font-size: small;
+}
+.tab-content .list-unstyled 
+{
+      background-color:#FFF9EB;
+      overflow: auto;
+}
+.custom-list-number {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+/* --- Nutrition Grid Styling --- */
+.nutrition-item {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    
+}
+.nutrition-icon-circle {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+.nut-icon-1 { background-color: #FFEDD4;color: #F54A00; } 
+.nut-icon-2 { background-color: #DBEAFE; color: #155DFC;} 
+.nut-icon-3 { background-color: #FEF9C2; color: #D08700;} 
+.nut-icon-4 { background-color: #FFE2E2; color: #E7000B; } 
+.nut-icon-5 { background-color: #DBFCE7; color: #01A63F;} 
+.nut-icon-6 { background-color: #FCE7F3; color: #E60076;} 
+.nut-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.nut-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* --- Chef's Tips Styling --- */
+.tip-item {
+    background-color: var(--highlight-bg);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+.tip-item .fa-circle-dot {
+    color: var(--primary-color);
+    margin-right: 10px;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+/* --- Button Styling --- */
+.btn-try-recipe {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    
+    padding: 10px 25px;
+    border: none;
+    transition: all 0.2s;
+}
+.btn-try-recipe:hover {
+    background-color: #e04a25;
+    color: white;
+    transform: scale(1.1);
+}
+
+.upH
+{
+    height: 30vh;
+    overflow-y: auto;
+}

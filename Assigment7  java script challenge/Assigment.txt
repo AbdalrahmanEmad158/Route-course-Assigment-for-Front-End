@@ -1,0 +1,613 @@
+
+var name = window.prompt("Enter your name");
+var Age = window.Number(prompt("Enter your name"));
+var years_old = 2025-Age
+
+console.log("Hello "+ name + "! You are "+Age +" years old and you were born around "+ years_old);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var number_to_cheak =Number(window.prompt("Enter number_to_cheak"));
+var amount_in_USD=amount_in_EGP /47.22.toFixed(2)
+var amount_in_EUR=amount_in_EGP     /54.35.toFixed(2)
+var amount_in_GBP=amount_in_EGP    /61.95.toFixed(2)
+
+
+console.log(amount_in_EGP+" EGP = $"+amount_in_USD+" USD"+", €"+amount_in_EUR+" EUR"+", £"+amount_in_GBP+" GBP")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var number_to_cheak =Number(window.prompt("Enter number_to_cheak"));
+if (number_to_cheak % 2 ===0) 
+    {
+    console.log(number_to_cheak+" is an even number")
+}
+else
+{
+       console.log(number_to_cheak+" is an odd number")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var hour = window.prompt("enter a hour")
+ if (hour>=0 && hour<=11) {
+    console.log("Good morning!")
+ }
+
+ else if (hour>=12 && hour<=17) {
+     console.log("Good afternoon!")
+ }
+
+  else  {
+     console.log("Good evening!")
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var supj1 = Number( window.prompt("enter a supj1"))
+ var supj2 = Number( window.prompt("enter a supj2"))
+ var supj3 = Number( window.prompt("enter a supj3"))
+
+ var average = (supj1+supj2+supj3)/3
+
+var rounded = average.toFixed(2)
+
+ if (average>=50) {
+    console.log("Average: "+rounded+", Status: Pass")
+ }
+
+
+  else  {
+    console.log("Average: "+rounded+", Status: Fail")
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var num1 = Number( window.prompt("enter a num1"))
+ var num2 = Number( window.prompt("enter a num2"))
+ var operator =  window.prompt("enter a operator")
+ var calculating ;
+
+ if (operator==="+") {
+    calculating= num1+num2
+ }
+
+ else if (operator==="-") {
+    calculating= num1-num2
+ }
+  else if (operator==="/") {
+    calculating= num1/num2
+ }
+ else
+ calculating = num1*num2
+console.log(num1 +" "+operator+" "+num2 +" = "+calculating)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var num = Number( window.prompt("enter a num to get it multiblication"))
+ var calc
+ 
+for (let i = 1; i < 11;i++)
+{
+    calc = num*i;
+   console.log(" "+num +" x "+i+" = "+calc);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for (let i = 2; i < 11;i++)
+{
+    if (i%2===0)
+         {
+            console.log(i)
+        
+    }
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var calc =1
+ 
+for (let i = 5; i >0;i--)
+{
+   calc = calc*i
+}
+console.log(calc)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var calc = 51
+var num = 100
+while(calc>50)
+{num--
+   calc= num*num
+}
+num++
+console.log(num)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var num1 = Number(window.prompt("please enter num1"))
+var num2 = Number(window.prompt("please enter num2"))
+
+var assistant = num1
+num1=num2
+num2 = assistant
+
+console.log("After Swapping: num1="+num1+", num2="+num2)
+
+
+
+another solutio >>
+
+
+var num1 = Number(window.prompt("please enter num1"))
+var num2 = Number(window.prompt("please enter num2"))
+
+ num1 = num1+num2
+num2=num1-num2
+num1=num1-num2
+
+
+ممكن تتحل كمان بضرب وقسمه   او    اس ولوج
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var num1 = Number(window.prompt("please enter age"))
+var has_ticket = window.prompt("please enter has_ticket")
+var calc 
+
+if (num1>=18 || has_ticket==="yes") {
+    calc="true"
+}
+else
+{
+    calc = "false"
+}
+
+
+console.log("Access granted: "+calc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var hours_worked = Number(window.prompt("enter hours_worked"))
+var hourly_rate = Number(window.prompt("enter hourly_rate"))
+var Regular
+var Overtime 
+var over_all
+var diff
+
+
+if (hours_worked<=40) {
+    over_all = hours_worked*hourly_rate
+    Regular = over_all
+    Overtime=0
+}
+else
+{
+ diff = hours_worked - 40;
+ Regular = 40*hourly_rate
+ Overtime = diff *hourly_rate*1.5
+ over_all= Overtime+Regular
+}
+
+
+console.log("Regular: $"+Regular+", Overtime: $"+Overtime+", Total: $"+over_all)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var width = Number(window.prompt("please enter your width"))
+var high = Number(window.prompt("please enter your high"))
+
+var BMI = width/ (high*high)
+
+var rounded = BMI.toFixed(2)
+
+var your_range
+
+if (rounded<18.5) {
+  your_range = "Underweight"
+}
+
+else if (rounded<=24.9) {
+   your_range = "Normal weight"
+}
+
+else if (rounded<29.9)
+{
+   your_range = "Overweight"
+}
+
+else{
+   your_range = "Obese"
+}
+
+console.log("BMI: "+rounded+" - "+your_range)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var operation = Number(window.prompt("please enter your operation"))
+var string_operation
+var new_balance
+if (operation===1) {
+  string_operation = "Balance"
+}
+
+else if (operation===2) {
+    string_operation = "Withdraw"
+}
+
+else
+{
+  string_operation = "Deposit"
+}
+
+if (string_operation == "Withdraw" || string_operation == "Deposit") {
+  var amount = Number(window.prompt("please enter your amount"))
+}
+
+var currentBalance = Number(window.prompt("please enter your currentBalance"))
+
+
+if (string_operation == "Balance")
+{
+  new_balance = currentBalance
+  console.log("Your balance is: $"+new_balance)
+}
+
+else if (string_operation == "Withdraw") {
+    new_balance = currentBalance-amount
+    console.log("Withdrew $"+amount+". New balance: $"+new_balance)
+}
+else
+{
+  new_balance = currentBalance+amount
+  console.log("Deposited $"+amount+". New balance: $"+new_balance)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for (let i = 1; i < 101; i++){
+ 
+if (i%3 !=0  && i%5 !=0) {
+  console.log(i+" ")
+}
+
+  else
+  {
+    if (i%3 ==0  && i%5 ==0) {
+    console.log("FizzBuzz ")
+  }
+
+  else if (i%3 ==0) {
+    console.log("Fizz ")
+  }
+
+  else if (i%5 ==0)
+{
+  console.log("Buzz ")
+} 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var row = Number(window.prompt("enter number of row"))
+
+
+for (let i = 1; i <= row; i++) {
+  for (let j = 1; j <= i; j++) {
+   console.log("*")
+    
+  }
+  console.log(" ")
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var row = Number(window.prompt("enter number of row"))
+
+
+for (let i = 1; i <= row; i++) {
+  var j =row
+  for (j ; j > i; j--) {
+   console.log(" ")
+    
+  }
+   for (let k = j; k > 0; k--) {
+   console.log("*")
+    
+  }
+  console.log(" ")
+  
+}

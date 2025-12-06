@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asigment1</title>
+
+  <style>
+   .card {
+    display: inline-block;
+    text-align: center;
+    background-color: aqua;
+    width: 24%;
+   }
+   .card img{
+    width: 100%;
+   }
+  </style>
+
+</head>
+<body>
+  <center><h1>My Practise</h1></center>
+<div class="parent">
+  <div class="card">
+    <img src="images/social_13480311.png" alt="">
+    <h2>heading</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+       Cum repellat error exercitationem consequuntur laborum atque voluptatem voluptatum voluptas vero rem.</p>  
+       <button>btn</button>   
+  </div>
+  
+
+   <div class="card">
+    <img src="images/social_13480311.png" alt="">
+    <h2>heading</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+       Cum repellat error exercitationem consequuntur laborum atque voluptatem voluptatum voluptas vero rem.</p>  
+       <button>btn</button>      
+  </div>
+
+
+
+   <div class="card">
+    <img src="images/social_13480311.png" alt="">
+    <h2>heading</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+       Cum repellat error exercitationem consequuntur laborum atque voluptatem voluptatum voluptas vero rem.</p> 
+       <button>btn</button>       
+  </div>
+
+
+
+   <div class="card">
+    <img src="images/social_13480311.png" alt="">
+    <h2>heading</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+       Cum repellat error exercitationem consequuntur laborum atque voluptatem voluptatum voluptas vero rem.</p>     
+       <button>btn</button>   
+  </div>
+</div>
+</body>
+</html>

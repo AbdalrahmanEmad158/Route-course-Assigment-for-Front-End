@@ -1,0 +1,1051 @@
+/* global css syntaxs start */
+
+*{
+    box-sizing: border-box;
+     margin: 0; 
+     padding: 0; 
+     font-family: 'Poppins', sans-serif;
+}
+.float-left{
+    float: left; 
+}
+.float-right{
+    float: right; 
+}
+.clearfix{
+    clear: both;
+}
+section{
+    padding: 176px  12% ; 
+    padding-bottom: 0px;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+   
+   padding :10px;
+    border-radius: 20px;
+}
+
+
+
+/* global css syntaxs end */
+
+
+
+/* header nav start */
+nav{
+    position: fixed;
+   /* background-color: yellow;*/
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: #F5F3FF;
+    padding-left: 12%;
+    }
+
+
+.float-left2{float: left; 
+    width: 3%; 
+   /* background-color: red;*/
+     margin: 5px;
+     margin-left: -10px;
+
+    }
+.text-flo{padding:20px 3px ; width: 25%; font-size: 2rem; margin-left: 10px;}
+
+
+
+i.fa-solid.fa-helicopter{
+    font-size: 40px;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 10px;
+    border: 2px solid #7C3AED;
+    background-color: #7C3AED; ;
+}
+
+.float-right
+{
+    float: right; 
+    width: 70%;  
+    /*background-color: green;*/
+    margin-top: 5px;
+    padding:20px 3px
+    }
+
+.float-right2{
+    float: left; 
+    width: fit-content; 
+    /*background-color: blue;*/
+    margin: 15px;
+    position: relative;
+      
+    }
+    .float-right2:nth-child(1){
+        margin-left: 300px;
+        
+    }
+
+.float-right2::after{
+    content: "";  
+    position: absolute; 
+    left: 0%;
+    width: 0%;
+    height: 3px;
+    background-color: #7F22FE;
+    top: 100%;
+    visibility: hidden;
+    transition: width 0.3s ease-in-out;
+ }
+
+ nav li:hover.float-right2::after{
+        width: 100%;
+        visibility: visible;
+     }
+
+.float-right2:nth-child(1):after{
+    width: 100%;
+    visibility: visible;
+ }
+
+
+ nav li a:hover{
+        color: #7C3AED;
+        
+    }
+   
+nav li:nth-child(1) a{
+        color: #7C3AED;
+        
+    }
+
+    nav ul{list-style: none;}
+
+    nav a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+
+    }
+    
+
+/* header nav end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* main */
+/* sec 1 start id hero   img start*/
+
+/* img start */
+#hero .container .float-left2{
+    width: 40%; 
+    float: left; 
+    /*background-color: orange;*/
+    margin-right: 5%;
+    
+}
+#hero .container .float-left2:nth-child(1){
+  border: 2px solid rgb(218, 213, 213);
+  border-radius: 10px;
+  position: relative;
+}
+#hero .container .float-left2 img{
+    width: 100%;
+    padding: 10px;
+    display: block;
+    border-radius: 20px;
+}
+#hero .container .float-left2 .helecoptarimg .posimg{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    background-color: #7C3AED;
+    padding: 4px;
+    border-radius: 10px;
+}
+/* img end*/
+
+
+/* img text start */
+
+#hero .float-left2:nth-child(2) .helecoptar-text-flo .spans .float-left3{
+    width: 25%; 
+    float: left; 
+    background-color: #A684FF;
+    margin: 5px;
+    border-radius: 20px;
+    padding :2px 5px;
+    text-align: center;
+    color: white;
+}
+
+h1{
+   margin-bottom: 20px;
+    font-size: 3.5rem;
+}
+p{
+    
+    line-height: 1.5;
+    font-size: 1.4rem;
+     margin-bottom: 20px;
+       margin-top:  20px;
+       color:rgb(66, 66, 66);
+       font-family:Exo, sans-serif;
+       text-align: center;
+}
+
+h1 span{
+    color: #7C3AED;
+}
+
+#hero .float-left2:nth-child(2) .helecoptar-text-flo .spanss .float-left3{
+    width: 20%; 
+    float: left; 
+    margin: 5px;
+    padding :2px 5px;
+    text-align: center;
+  
+}
+
+
+#hero .float-left2:nth-child(2) .helecoptar-text-flo .spanss .float-left3:nth-child(1){
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#hero .float-left2:nth-child(2) .helecoptar-text-flo .spanss .float-left3:nth-child(2){
+  text-decoration: line-through;
+  
+}
+
+#hero .float-left2:nth-child(2) .helecoptar-text-flo .spanss .float-left3:nth-child(3){
+background-color: #FFE2E2;
+color: #E7000B;
+font-weight:600;
+}
+
+
+.btn-scale .btn1{
+    width: 100%;
+    display: block;
+    background-color: #7C3AED;
+    padding: 15px 0px;
+    border-radius: 30px ;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+.btn-scale .btn1:hover{
+   transform: scale(1.1);
+}
+
+
+.btn-scale .btn2{
+    width: 100%;
+    display: block;
+    background-color: white;
+    padding: 15px 0px;
+    border-radius: 30px ;
+    color: black;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    
+}
+.btn-scale .btn2:hover{
+   transform: scale(1.1);
+}
+
+/* img text end*/
+/* sec 1 start id hero   End*/
+
+
+
+
+
+/* sec 2 id Specifications start*/
+
+h2{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 span{
+    color: #7C3AED;
+}
+#Specifications p{
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(82, 82, 82);
+    /*background-color: red;*/
+}
+
+#Specifications h2{
+    margin-top: 150px;
+}
+
+
+
+
+td .fa-solid.fa-video
+{
+color: #00B8DB;
+}
+
+td .fa-solid.fa-camera
+{
+color: #00BBA7;
+}
+td .fa-solid.fa-battery-full
+{
+color: #00C951;
+}
+td .fa-solid.fa-volume-high
+{
+    color: #FF6900;
+}
+td .fa-solid.fa-gauge-high
+{
+    color: #FF4D6D;
+}
+
+td .fa-solid.fa-shield-halved
+{
+    columns: #00A6F4;
+}
+
+td .fa-solid.fa-scale-balanced
+{
+    color: #615FFF;
+}
+
+td .fa-solid.fa-cloud-rain
+{
+    color: #2B7FFF;
+}
+
+td .fa-solid.fa-dollar-sign
+{
+    color: #F0B100;
+}
+
+.containerr{
+    width: 100%;
+    border: 1px solid gray;
+   background-color: white;
+   padding :10px;
+   border-radius: 20px;
+}
+
+table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+    border-radius: 20px;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 10px;
+       position: relative;
+    
+}
+
+.overlay{
+    position: absolute;
+    top: 159%;
+    left: 27%;
+    width: 300px;
+    height: 520px;
+    border-radius: 20px;
+    background-color: #EDE9FE;
+}
+
+tr{
+    padding-top:  5px;
+   
+    
+}
+
+td, th
+{
+    
+    padding: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 20px;
+
+}
+th
+{
+    border-bottom: 3px solid gray;
+    
+}
+th:nth-child(1)
+{
+   text-align: left;
+}
+td{
+    border-bottom: 1px solid gray;
+}
+td:nth-child(1)
+{
+   text-align: left;
+}
+
+td:nth-child(2)
+{
+    width: 20%;
+    background-color: #8E51FF;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+.fa-solid.fa-check
+{
+    margin-right: 5px;
+}
+.fa-solid.fa-xmark
+{
+    margin-right: 5px;
+    color: #F54A00;
+}
+td.tdco
+{
+    color: #F54A00;
+}
+
+.fa-solid.fa-star
+{
+    color: #FDC700;
+    float: left;
+    
+}
+.fa-solid.fa-star:nth-child(1)
+{
+    margin-left: 57px;
+}
+.fa-star-half-stroke
+{
+     color: #FDC700;
+      float: left;
+}
+.fa-regular.fa-star
+{
+      color: #FDC700;
+       float: left;
+}
+
+
+.sec2f
+{
+   
+    width: 50%;
+    margin: auto;
+     margin-top: 60px;
+    text-align: center;
+    color: #00A63E;
+    border: 2px solid gray;
+    padding-top: 15px;
+    border-radius: 15px;
+   
+    
+}
+
+.sec2f .ic{
+    float: left;
+    margin-left: 100px;
+    
+}
+
+.sec2f .ic.t {
+    margin-top: 10px;
+    line-height: 0px;
+     color: #00A63E;
+     margin-left: 4px;
+    
+}
+
+
+table thead h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color :#7008E7
+}
+
+table thead span {
+    font-size: 1rem;
+    color : #7008E7;
+    font-weight: normal;
+};
+/* sec 2 id Specifications End*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* sec 3 id Rating & Reviews start*/
+.hawya
+{
+    padding: 0px 1%;
+}
+
+
+/*#RatingAndReviews .cards .card{
+   
+    background-color: turquoise;
+    width: 40%;
+    margin-right: 20px;
+}
+
+ /* sec 3 id Rating & Reviews End*/
+
+
+.float-left{
+    float: left; 
+}
+.float-right{
+    float: right; 
+}
+.clearfix{
+    clear: both;
+}
+
+
+#RatingAndReviews .container .card-left
+{
+    width: 30%;
+    margin-right: 10%;
+    border: 2px solid gray;
+    border-radius: 15px;
+    position: sticky;
+    top: 90px;
+    left: 0px;
+  
+}
+
+#RatingAndReviews .container .card-left .card-header
+{
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+
+#RatingAndReviews .container .card-left .card-header h3
+{
+   font-size: 4rem;
+}
+
+
+#RatingAndReviews .container .cards .card-left .card-header .stars
+{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    
+    height: 30px;
+    padding-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+}
+
+#RatingAndReviews .container .cards .card-left .num-star
+{
+    width: 10%;
+    margin-right: 5%;
+}
+
+.ccoonnttaaiinneerr
+{
+    padding: 20px 40px;
+}
+
+.all
+{ width: 70%;
+    height: 15px;
+    background-color: #fff;
+    
+    border: 2px solid gray;
+    border-radius: 20px;
+    margin-right: 5%;
+    overflow: hidden;
+}
+
+#RatingAndReviews .container .cards .card-left .numpercentage
+{
+    width: 10%;
+   
+}
+
+
+.val{
+    height: 15px;
+}
+
+.v78{
+    width: 78%;
+  
+    background-color: #F0B100;
+}
+
+.v15{
+    width: 15%;
+  
+    background-color: #F0B100;
+}
+
+.v5{
+    width: 5%;
+  
+    background-color: #F0B100;
+}
+
+.v105{
+    width: 1.5%;
+  
+    background-color: #F0B100;
+}
+
+.v05{
+    width: 0.5%;
+    background-color: #F0B100;
+    
+}
+
+
+
+#RatingAndReviews .container .card-left .border-bottom
+{
+    margin-bottom: 10px;
+   border-bottom: 2px solid gray;
+}
+
+
+#RatingAndReviews .container .card-left .last-in-card
+{
+    width: 90%;
+    margin: auto;
+  margin-top: 20px;
+    
+}
+
+#RatingAndReviews .container .card-left .last-in-card .col
+{
+    text-align: center;
+    width: 40%;
+   margin-right: 19%;
+ 
+}
+
+#RatingAndReviews .container .card-left .last-in-card .col.last-col
+{
+    width: 40%;
+  margin-right:0px;
+
+}
+
+
+#RatingAndReviews .container .card-left .last-in-card .col p
+{
+    margin-top: 0px;
+   font-size: 15px;
+}
+
+#RatingAndReviews .container .cards-right 
+    {
+        width: 55%;
+       
+    }
+
+
+    
+#RatingAndReviews .container .cards-right .card 
+{
+   background-color: #FFFFFF;
+   border: 2px solid gray;
+   border-radius: 10px;
+}
+
+#RatingAndReviews .container .cards-right .card .cardh
+{
+  padding: 20px;
+}
+
+#RatingAndReviews .container .cards-right .card .avatar
+{
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+    border: 2px solid  #7C3AED;
+    margin-right: 1%;
+    display: block;
+
+}
+
+#RatingAndReviews .container .cards-right .card .avatar-infol
+{
+    width: 35%;
+    text-align: left;
+}
+
+#RatingAndReviews .container .cards-right .card .avatar-infol p
+{
+   
+    text-align: left;
+}
+
+#RatingAndReviews .container .cards-right .card .avatarinfor
+{
+ width: 25%;
+ text-align: center;
+}
+
+#RatingAndReviews .container .cards-right .card .avatarinfor span
+{
+    background-color: #EDE9FE;
+    color:#5D0ECB ;
+    border: 1px solid #5D0ECB;
+    border-radius: 20px;
+
+}
+
+
+ .btnsec3{
+        width: 200px;
+        display: block;
+        background-color: #7C3AED;
+        padding: 15px 0px;
+        border-radius: 30px ;
+        color: white;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .btnsec3:hover{
+        background-color: white;
+        color: #7C3AED;
+        border: 2px solid #7C3AED;
+    }
+ /* sec 3 id ratting and review end*/
+
+
+
+
+
+
+
+  /* sec 4 id Related-Products start*/
+    #Related-Products .sec4-cards .sec4-card
+    {
+        margin-right: 55px;
+       background-color: #FFFFFF;
+        width: 20%;
+        float: left;
+        border: 2px solid gray;
+        padding: 15px;
+        border-radius: 15px;
+         position: relative;
+    }
+
+     #Related-Products .sec4-pos
+     {
+     position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    background-color: #7C3AED;
+    padding: 4px;
+    border-radius: 10px;
+     }
+
+      #Related-Products .sec4-pos.pos1
+      {
+        background-color: #00BBA7;
+      }
+      #Related-Products .sec4-pos.pos2
+      {
+        background-color: #00C951;
+      }
+      #Related-Products .sec4-pos.pos3
+      {
+        background-color: #00B8DB;
+      }
+      #Related-Products .sec4-pos.pos4
+      {
+        background-color:#FF6900 ;
+      }
+
+    #Related-Products .sec4-cards .sec4-card img
+    {
+        width: 90%;
+        border-radius: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #Related-Products button
+    {
+        width: 120px;
+        display: block;
+        background-color: #7C3AED;
+        padding: 15px 0px;
+        border-radius: 30px ;
+        color: white;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+        margin: auto;
+        margin-top: 20px;
+        cursor: pointer;
+        float: right;
+    }
+
+    #Related-Products h4
+    {
+
+        display: inline;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        float: left;
+    }
+
+
+     #Related-Products h3
+    {
+        margin-top: 30px;
+    }
+
+
+
+    #Related-Products .sec4-cards .sec4-card:hover img
+    {
+        transform: scale(1.1);
+        
+    }
+   #Related-Products  .sec4btn
+   {
+    display: block;
+   margin: auto;
+    width: 170px;
+    background-color: white ;
+    padding: 15px 0px;
+    border-radius: 30px ;
+    color: #7F22FE;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 20px;
+    float: none;
+    cursor: pointer;
+
+   }
+
+
+   #Related-Products .sec4btn:hover
+   {
+    background-color: #7F22FE;
+    color: white;
+    border: 2px solid #7F22FE;
+   }
+
+ /* sec 4 id Related-Products end*/
+
+
+
+
+
+
+
+
+   /* Footer started*/
+
+footer {
+    background-color: #171c31; 
+    color: #f0f0f0; 
+    padding-top: 50px;
+}
+
+
+.footer-content {
+    width: 76%; 
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 40px;
+    
+}
+
+
+.footer-col {
+    float: left; 
+    padding: 0 15px
+}
+
+
+.about-us {
+    width: 35%; 
+}
+.about-us .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+.about-us .logo i {
+    color: #7C3AED; 
+    font-size: 1.8rem;
+    margin-right: 5px;
+}
+.about-us p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+.links-col {
+    width: 21%;
+}
+.links-col h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: white;
+    text-align: left;
+}
+.links-col ul {
+    list-style: none;
+    padding: 0;
+}
+.links-col ul li {
+    margin-bottom: 10px;
+}
+.links-col ul li span {
+    text-decoration: none;
+    color: #b0b0b0;
+    font-size: 1rem;
+    display: block; 
+    transition: color 0.3s;
+}
+.links-col ul li span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.social-links span {
+    float: left; 
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #2b334d; 
+    color: white;
+    border-radius: 8px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+.social-links span:nth-child(1):hover {
+    background-color: blue;
+}
+
+.social-links span:nth-child(2):hover {
+    background-color: blue;
+}
+
+.social-links span:nth-child(3):hover {
+    background-color: tomato;
+}
+
+.social-links span:nth-child(4):hover {
+    background-color: red;
+}
+
+
+
+.footer-bottom {
+    border-top: 1px solid #2b334d;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+   
+    text-align: center; 
+}
+
+.footer-bottom .footer{
+    width: 76%; 
+    margin: 0 auto;
+    padding: 0;
+}
+
+.footer-bottom .copyright {
+    float: left; 
+    width: 50%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+.footer-bottom .copyright span {
+    color: #b0b0b0;
+    text-decoration: none;
+}
+
+
+.footer-bottom .payment-icons {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.footer-bottom .payment-icons img{
+   
+    width: 15%;
+    text-align: right;
+    margin-right: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: white;
+}
+
+footer .fa-solid.fa-helicopter
+{
+    color: white;
+}
+
+
+/* Footer Styles End */
