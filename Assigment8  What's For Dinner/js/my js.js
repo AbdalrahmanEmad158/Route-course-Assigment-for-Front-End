@@ -1,8 +1,3 @@
-var random_number = Math.floor( Math.random()*9)
-/* return from 0 to 8 index === 9 meals */
-
-
-var All_Meals=[];
 
 var meal1 = {
   "name": "Thai Green Curry",
@@ -501,10 +496,21 @@ var meal4 = {
       "Serve with brown rice for a complete meal."
     ]
   }
+  var All_Meals=[];
 
 
 
   All_Meals.push(meal1,meal2,meal3,meal4,meal5,meal6,meal7,meal8,meal9)
+
+
+
+
+ function AnotherMeal() {
+   var random_number = Math.floor( Math.random()*9)
+/* return from 0 to 8 index === 9 meals */
+
+
+
   
 if (All_Meals[random_number].timing.alltime>45) {
   document.getElementById("test").innerHTML=`  <div class="row justify-content-center">
@@ -711,7 +717,7 @@ if (All_Meals[random_number].timing.alltime>45) {
                         </div>
 <hr>
                         <div class="mt-4 rounded-3">
-                            <button class="btn btn-try-recipe">
+                            <button onclick="AnotherMeal()" class="btn btn-try-recipe">
                                 <i class="fas fa-rotate me-2"></i> Try Another Recipe
                             </button>
                         </div>
@@ -920,3 +926,5 @@ else
         </div>
     </div>`
 }
+ }
+AnotherMeal()
