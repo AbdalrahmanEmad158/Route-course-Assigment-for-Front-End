@@ -585,10 +585,10 @@ if (All_Meals[random_number].timing.alltime>45) {
 
                         <ul class="nav nav-tabs" role="tablist" id="recipeTabs">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients-content" type="button" role="tab" aria-controls="ingredients-content" aria-selected="false"><i class="fa-solid fa-list-check pe-2"></i>Ingredients</button>
+                                <button class="nav-link active" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients-content" type="button" role="tab" aria-controls="ingredients-content" aria-selected="false"><i class="fa-solid fa-list-check pe-2"></i>Ingredients</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions-content" type="button" role="tab" aria-controls="instructions-content" aria-selected="true"><i class="fa-solid fa-book-open pe-2"></i>Instructions</button>
+                                <button class="nav-link" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions-content" type="button" role="tab" aria-controls="instructions-content" aria-selected="true"><i class="fa-solid fa-book-open pe-2"></i>Instructions</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="nutrition-tab" data-bs-toggle="tab" data-bs-target="#nutrition-content" type="button" role="tab" aria-controls="nutrition-content" aria-selected="false"><i class="fa-solid fa-chart-pie pe-2"></i>Nutrition</button>
@@ -790,10 +790,10 @@ else
 
                         <ul class="nav nav-tabs" role="tablist" id="recipeTabs">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients-content" type="button" role="tab" aria-controls="ingredients-content" aria-selected="false"><i class="fa-solid fa-list-check pe-2"></i>Ingredients</button>
+                                <button class="nav-link active" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients-content" type="button" role="tab" aria-controls="ingredients-content" aria-selected="false"><i class="fa-solid fa-list-check pe-2"></i>Ingredients</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions-content" type="button" role="tab" aria-controls="instructions-content" aria-selected="true"><i class="fa-solid fa-book-open pe-2"></i>Instructions</button>
+                                <button class="nav-link" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions-content" type="button" role="tab" aria-controls="instructions-content" aria-selected="true"><i class="fa-solid fa-book-open pe-2"></i>Instructions</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="nutrition-tab" data-bs-toggle="tab" data-bs-target="#nutrition-content" type="button" role="tab" aria-controls="nutrition-content" aria-selected="false"><i class="fa-solid fa-chart-pie pe-2"></i>Nutrition</button>
@@ -919,7 +919,11 @@ else
                             </div>
                         </div>
 <hr>
-                        
+                        <div class="mt-4 rounded-3">
+                            <button onclick="AnotherMeal()" class="btn btn-try-recipe">
+                                <i class="fas fa-rotate me-2"></i> Try Another Recipe
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
