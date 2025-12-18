@@ -835,11 +835,11 @@ function validation(element) {
 
 
   var regex = {
-    nameInput: /^[a-z]{3,50}$/i,
+    nameInput: /^[a-z]{3}[a-z ]{0,50}$/i,
     phoneInput: /^(002|\+2)?01[0125][0-9]{8}$/,
-    emailInput: /^([A-Z]{3,}@(gmail|yahoo).com$)|(^$)/,
-    addressInput: /(^[A-Z]{3,60}$)|(^$)/,
-    noteTextareaInput: /(^[\w ]{4,300}$)|(^$)/,
+    emailInput: /^([a-zA-Z]{3}[a-zA-Z0-9_]{0,97}@(gmail|yahoo)\.com$)|(^$)/,
+    addressInput: /^([a-z]{2}[a-z0-9 ]{0,97}$)|(^$)/i,
+    noteTextareaInput: /^([a-z]{2}[\w\s.,-]{0,97}$)|(^$)/i,
   };
 
 console.log(element.id);
