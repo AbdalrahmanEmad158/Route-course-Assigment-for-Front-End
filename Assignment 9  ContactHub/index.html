@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/my css.css">
+</head>
+<body>
+<body class="">
+    <nav class="navbar navbar-expand-lg custom-navbar bg-white fixed-top">
+      <div class="container">
+        <div class="d-flex align-items-center gap-2">
+          <div class="logo-circle d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-address-book"></i>
+          </div>
+          <div>
+            <h4 class="mb-0 fw-bold">Contact
+              <span class="color-span">Hub</span>
+            </h4>
+            <small class="text-muted">Smart Contact Manager</small>
+          </div>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <div class="d-flex align-items-center justify-content-center gap-2 right-icons mt-3 mt-lg-0">
+            <button class="rounded-4 fw-bold bg-button" data-bs-toggle="modal" data-bs-target="#addContactModal" onclick="setFormToAddContact()">
+              <i class="fa-brands fa-add fs-6 fw-bold"></i> Add Contact
+            </button>
+            <i class="fa-solid fa-bell nav-icon"></i>
+            <i class="fa-solid fa-gear nav-icon"></i>
+            <img src="image/avatar-1.jpg" class="profile-img" />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="addContactModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content overflow-auto">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addContactModalLabel">Add New Contact</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+            <div class="d-flex flex-column align-items-center mb-4">
+              <div id="profile-picture-container">
+                <i class="fa-solid fa-user d-block "id="profileIconStyle"></i>
+                <img id="imgLivePrev" src="image/photo_1_2025-12-17_06-36-04.jpg" alt="photo" class="d-none w-100 h-100 rounded-circle">
+              </div>
+              
+
+              <label for="change-photo-input" type="button" id="change-photo-btn" class="position-relative btn btn-outline-primary mt-3">
+              <i class="fa-solid fa-camera me-1"></i> Change Photo
+      
+              <input type="file" id="change-photo-input" class="position-absolute" accept="image/*">
+            
+              </label>
+              
+            </div>
+
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom"
+                  >Full Name <span class="text-danger-custom">*</span></label
+                >
+                <input 
+                oninput="validation(this)"
+                  type="text"
+                  class="form-control"
+                  id="nameInput"
+                  required
+                  placeholder="Enter full name"
+               />
+               <p  class="alert alert-danger d-none">Name must strart with capital letter</p>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom"
+                  >Phone Number <span class="text-danger-custom">*</span></label
+                >
+                <input
+                 oninput="validation(this)"
+                  type="tel"
+                  class="form-control"
+                  id="phoneInput"
+                  required
+                  placeholder="e.g., 01151894760"
+                />
+                <p  class="alert alert-danger d-none">phone must strart with capital letter</p>
+                
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom"
+                  >Email Address</label
+                >
+                <input
+                 oninput="validation(this)"
+                  type="email"
+                  class="form-control"
+                  id="emailInput"
+                  required
+                  placeholder="name@example.com"
+                />
+                <p  class="alert alert-danger d-none">email must strart with capital letter</p>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom"
+                  >Address</label
+                >
+                <input
+                oninput="validation(this)"
+                  type="text"
+                  class="form-control"
+                  id="addressInput"
+                  placeholder="Enter address"
+                />
+                <p  class="alert alert-danger d-none">adress must strart with capital letter</p>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom">Group</label>
+                <select class="form-select form-control" id="groupSelectInput">
+                  <option value="Select a group" selected>Select a group</option>
+                  <option value="family">Family</option>
+                  <option value="work">Work</option>
+                  <option value="friends">Friends</option>
+                  <option value="other">Other</option>
+                  <option value="school">school</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label font-weight-bold-custom">Note</label>
+                <textarea
+                oninput="validation(this)"
+                  class="form-control"
+                  id="noteTextareaInput"
+                  rows="3"
+                  placeholder="Add a note or description..."
+                  
+                ></textarea>
+                <p  class="alert alert-danger d-none">notes must strart with capital letter</p>
+              </div>
+
+              <div class="d-flex gap-2 mt-4 mb-3">
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="favoriteCheckInput"
+                    value="favorite"
+                  />
+                  <label
+                    class="form-check-label checkbox-label-custom"
+                    for="favoriteCheck"
+                  >
+                    <i class="fa-solid fa-star favorite-icon"></i> Favorite
+                  </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="emergencyCheckInput"
+                    value="emergency"
+                  />
+                  <label
+                    class="form-check-label checkbox-label-custom"
+                    for="emergencyCheck"
+                  >
+                    <i class="fa-solid fa-heart-pulse icon-card emergency-icon"></i> Emergency
+                  </label>
+                </div>
+              </div>
+            </form>
+            </div>
+
+
+             <div class="modal-footer d-flex p-3" id="footer-full-width-btns">
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1"
+              
+               
+              data-bs-dismiss="modal"
+               aria-label="Close"
+            >
+              Cancel
+            </button>
+
+
+           <button
+           id="Addbtn"
+  type="button"
+  class="btn bg-button flex-grow-1 ms-2 d-block"
+  onclick="AddContact()"
+ 
+               aria-label="Close"
+>
+  Save Contact
+</button>
+
+
+ <button
+ id="updateBtn"
+  type="button"
+  class="btn bg-button flex-grow-1 ms-2 d-none"
+  onclick="updateContact()"
+   
+               aria-label="Close"
+>
+  update Contact
+</button>
+          </div>
+          </div>
+
+         
+        </div>
+      </div>
+
+    <section class="min-vh-100 pt-5">
+      <div class="container pt-5">
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="card rounded-4 card-hover">
+              <div class="card-body d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-users me-2 icon-card"
+                  style="background: var(--icon-one-gradient)"
+                ></i>
+                <div class="text-total text-muted d-flex flex-column fs-7">
+                  TOTAL
+                  <span id="total" class="fs-4 text-black fw-bold">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card rounded-4 card-hover">
+              <div class="card-body d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-star me-2 icon-card"
+                  style="background: var(--icon-two-gradient)"
+                ></i>
+                <div class="text-total text-muted d-flex flex-column fs-7">
+                  FAVORITES
+                  <span id="totalFavorites" class="fs-4 text-black fw-bold">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card rounded-4 card-hover">
+              <div class="card-body  d-flex gap-2 align-items-center">
+                <i
+                  class="fa-solid fa-heart-pulse me-2 icon-card"
+                  style="background: var(--icon-three-gradient)"
+                ></i>
+                <div class="text-total text-muted d-flex flex-column fs-7">
+                  EMERGENCY
+                  <span id="totalEmergency" class="fs-4 text-black fw-bold">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+          <div class="col-lg-9">
+            <div class="mb-4">
+              <h2 class="fw-bold">All Contacts</h2>
+              <p class="text-muted">
+                Manage and organize your <span class="fw-bold">0</span> contacts
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <div class="search-bar d-flex align-items-center">
+                <i class="fa-solid fa-magnifying-glass me-2 text-muted"></i>
+                <input type="text" class="form-control border-0 p-0" 
+                placeholder="Search by name, phone, or email..." 
+                oninput="search(this.value)">
+                
+              </div>
+            </div>
+
+
+
+            <div id="display-wrapperContacts" class="row display-wrapper g-3">
+            
+
+
+              <div class="col-md-6 p-2 contact-card-bg rounded-4">
+                
+            <div class="d-flex">
+              <div class="position-relative p-3 contact-icon rounded-3 text-light d-flex align-items-center justify-content-center">
+                <div class="text-light position-absolute abs-star rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                
+               <img src="image/photo_1_2025-12-17_06-36-04.jpg" alt="" class="imagee">
+                 <div class="text-light position-absolute abs-heart rounded-circle d-flex align-items-center justify-content-center">
+                 <i class="fa-solid fa-heart-pulse"></i>
+                 </div>
+              </div>
+
+
+
+              <div>
+                 <h6 class="ms-3 h3">abdoemad</h6>
+                   <div class="d-flex">
+                      <div class="me-2 ms-3 d-inline-block contact-call-icon d-flex align-items-center justify-content-center p-2 rounded-3">
+                  <a href="tel:01009839106">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+                 <p class="fs-6"> 01009838106</p>
+                   </div>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="contact-gmail-icon d-flex align-items-center justify-content-center p-2 rounded-3 me-3">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <p>abdoemad1582004@gmail.com</p>
+            </div>
+
+             <div class="d-flex">
+              <div class="contact-Adress-icon d-flex align-items-center justify-content-center p-2 rounded-3 me-3">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <p class="text-light-emphasis">abdoemad1582004@gmail.com</p>
+            </div>
+
+            <div class="other-Grop-friends p-2 d-inline-block rounded-3">
+              friends
+            </div>
+            <div class="other-Grop-school p-2 d-inline-block rounded-3">
+              school
+            </div>
+            <div class="other-Grop-other p-2 d-inline-block rounded-3">
+              other
+            </div>
+            <div class="other-Grop-family p-2 d-inline-block rounded-3">
+              family
+            </div>
+            
+            <div class="other-Grop-work p-2 d-inline-block rounded-3">
+              work
+            </div>
+
+
+            <div class="Emergency-Grop p-2 d-inline-block rounded-3">
+              <i class="fa-solid fa-heart-pulse"></i> Emergency
+            </div>
+
+            
+            <hr>
+            <div class="d-flex justify-content-between">
+              <div>
+
+                <div class="d-inline-block rounded-3 contact-hr-call me-2">
+                  
+                  <a href="tel:+01151894760" class="p-2 rounded-3 mb-3">
+                     <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+
+
+
+                <div class="d-inline-block rounded-3 contact-hr-gmail">
+                 <a href="mailto:abdoemad1582004@gmail.com" class="p-2 rounded-3 mb-4">
+                   <i class="fa-solid fa-envelope"></i>
+                 </a>
+                </div>
+              </div>
+
+
+              <div>
+                
+                  <i class="fa-regular fa-star hov1 p-2"></i>
+                
+
+                <button class="border-n hov2 hov">
+                  <i class="fa-solid fa-star" onclick="togleFavIcon()"></i>
+                </button>
+
+
+                <button class="border-n hov3 ">
+
+                  <i class="fa-regular fa-heart" onclick="togleFavIcon()"></i>
+                </button>
+
+
+                <button class=" border-n hov4">
+
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </button>
+
+
+                <button class="border-n hov5">
+
+                  <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+
+                <button class="border-n hov6">
+
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+
+
+              </div>
+
+             
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card side-card mb-4 side-card-favorites rounded-4">
+              <div class="side-card-header-styled">
+                <div class="header-icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                  <h5 class="card-title fw-bold mb-0">Favorites</h5>
+                  <p class="card-text  mb-0">
+                    Quick access to starred contacts
+                  </p>
+                </div>
+              </div>
+
+             <div id="OutOfStockFavorite">
+               <div class="card-body p-1">
+                <div class="text-center text-muted row">
+                  <div class=" d-flex align-items-baseline mb-3 mb-md-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <div class="Favorites-side-icon-left p-3 text-light">
+                        FN
+                      </div>
+                     <div class="p-1">
+                       <h6>abdoemad</h6>
+                      <p class="ms-3"> 01009838106</p>
+                     </div>
+                    </div>
+
+                    <div class="Favorites-side-icon-right d-flex align-items-center justify-content-center p-3 rounded-3">
+                  <a href="tel:01009839106">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+                  </div>
+
+                </div>
+              </div>
+
+               <div class="card-body p-1">
+                <div class="text-center text-muted row">
+                  <div class=" d-flex align-items-baseline mb-3 mb-md-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <div class="Favorites-side-icon-left p-3 text-light">
+                        FN
+                      </div>
+                     <div class="p-1">
+                       <h6>abdoemad</h6>
+                      <p class="ms-3"> 01009838106</p>
+                     </div>
+                    </div>
+
+                    <div class="Favorites-side-icon-right d-flex align-items-center justify-content-center p-3 rounded-3">
+                  <a href="tel:01009839106">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+                  </div>
+
+                </div>
+              </div>
+
+              
+                <div class="text-center text-muted row">
+                  <div class=" d-flex align-items-baseline  mb-md-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <div class="Favorites-side-icon-left p-3 text-light">
+                        FN
+                      </div>
+                     <div class="p-1">
+                       <h6>abdoemad</h6>
+                      <p class="ms-3"> 01009838106</p>
+                     </div>
+                    </div>
+
+                    <div class="Favorites-side-icon-right d-flex align-items-center justify-content-center p-3 rounded-3">
+                  <a href="tel:01009839106">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card side-card mb-4 side-card-emergency rounded-4">
+              <div class="side-card-header-styled">
+                <div class="header-icon">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div>
+                  <h5 class="card-title fw-bold mb-0">Emergency</h5>
+                  <p class="card-text mb-0">
+                    Important contacts for urgent calls
+                  </p>
+                </div>
+              </div>
+
+
+             <div id="OutOfStockEmergency">
+               
+              <div class="card-body p-1">
+                <div class="text-center text-muted row">
+                  <div class=" d-flex align-items-baseline mb-3 mb-md-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <div class="Emergency-side-icon-left p-3 text-light">
+                        FN
+                      </div>
+                     <div class="p-1">
+                       <h6>abdoemad</h6>
+                      <p class="ms-3"> 01009838106</p>
+                     </div>
+                    </div>
+
+                    <div class="Emergency-side-icon-right d-flex align-items-center justify-content-center p-3 rounded-3">
+                  <a href="tel:01009839106">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+                  </div>
+
+                </div>
+              </div>
+
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="./js/my js.js"></script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+:root {
+  --brand-gradient: linear-gradient(to right, #7f22fe, #4f39f6);
+  --icon-one-gradient: linear-gradient(to right, #2b7fff, #155dfc);
+  --accent-color: #7f22fe;
+  --icon-one-gradient: linear-gradient(135deg, #4f70f8, #2a48e0);
+  --icon-two-gradient: linear-gradient(135deg, #ffb400, #f79f00);
+  --icon-three-gradient: linear-gradient(135deg, #ff4b77, #f82a5d);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.imagee{
+  width: 55px;
+  height: 55px;
+  border-radius: 25%;
+  object-fit: cover;
+}
+section {
+  background: #f8fafc;
+}
+
+.bg-section {
+  background-color: #fff8e6;
+}
+.color-span {
+  color: var(--accent-color);
+}
+.custom-navbar {
+  padding: 15px 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 30%;
+  background: var(--brand-gradient);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-icons .nav-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.right-icons .nav-icon:hover {
+  color: #000;
+  background-color: #F3F4F6;
+}
+.profile-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 25%;
+  object-fit: cover;
+}
+.profile-img img {
+  width: 100%;
+  height: 100%;
+}
+.bg-button {
+  font-size: 14px;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  background: var(--brand-gradient);
+  transition: 0.2s ease;
+}
+.bg-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(127, 34, 254, 0.3);
+}
+.fs-7{
+    font-size: 14px;
+}
+.card-body .icon-card {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.card-hover{
+    transition: 0.3s ease;
+}
+.card-hover:hover{
+  box-shadow: 0px 2px 10px rgba(198, 195, 198, 0.985);
+}
+.card {
+  border: none;
+  box-shadow: var(--card-shadow);
+}
+
+.search-bar {
+  border-radius: 15px;
+  border: 1px solid #e9ecef;
+  background: #fff;
+  padding: 10px 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.search-bar .form-control:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.search-bar:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.25rem #e7dcf7;
+}
+.empty-state {
+  padding: 50px 20px;
+  color: #adb5bd;
+}
+.empty-state .bg-icon {
+  background-color: #e6e7e7f6;
+  width: 70px;
+  height: 70px;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #d0d2d4;
+}
+
+.side-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.side-card-header-styled {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.side-card-header-styled .header-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.side-card-favorites .side-card-header-styled {
+  background-color: #fff8eb;
+}
+.side-card-favorites .header-icon {
+  background: #ffb400;
+}
+.side-card-favorites .card-title {
+  color: #333;
+}
+
+.side-card-emergency .side-card-header-styled {
+  background-color: #ffeff3;
+}
+.side-card-emergency .header-icon {
+  background: #ff4b77;
+}
+.side-card-emergency .card-title {
+  color: #333;
+}
+.side-card .card-body {
+  background-color: #ffffff;
+  padding: 5px;
+  text-align: center;
+}
+.card-text {
+  font-size: 10px;
+  color: #b2b4b6ee;
+}
+
+/*  end of disignn */
+.Favorites-side-icon-left
+{
+    background: var( --icon-two-gradient);
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    
+}
+.Favorites-side-icon-right
+{
+ background: #D0FAE5;
+ border-radius: 10px;
+ 
+}
+.Favorites-side-icon-right a {
+   color: #009966;
+}
+.side-card .card-body:hover .Favorites-side-icon-right{
+    background-color: #00BC7D;
+    cursor: pointer;
+}
+.side-card .card-body:hover .Favorites-side-icon-right a{
+    color: #ffffff;
+}
+
+
+
+
+.Emergency-side-icon-left
+{
+    background: var( --icon-three-gradient);
+    border-radius: 10px;
+}
+.Emergency-side-icon-right
+{
+ background-color: #FFF1F2;
+ border-radius: 10px;
+ transition: all 0.5s ease;
+ 
+}
+.Emergency-side-icon-right a {
+   color: #FF2056;
+   transition: all 0.5s ease;
+}
+.side-card .card-body:hover .Emergency-side-icon-right{
+    background-color: #FF2056;
+    cursor: pointer;
+}
+.side-card .card-body:hover .Emergency-side-icon-right a{
+    color: #ffffff;
+}
+
+
+.display-wrapper .contact-icon
+{
+    background:var( --icon-three-gradient) ;
+    width: 50px;
+    height: 50px;
+}
+.display-wrapper .abs-star
+{
+    width: 20px;
+    height: 20px;
+    top : -10px;
+    right : -10px;
+background-color: #FFB900;
+font-size : 10px;
+}
+
+.display-wrapper .abs-heart
+{
+    width: 20px;
+    height: 20px;
+    bottom : -10px;
+    right : -10px;
+    background-color: #FF2056;
+    font-size : 10px;
+}
+
+.display-wrapper .contact-call-icon
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #DBEAFE;
+    color: #1447E9;
+   
+}
+
+.display-wrapper .contact-gmail-icon
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #EDE9FE;
+    color: #7F22FE;
+}
+
+.display-wrapper .contact-Adress-icon
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #D0FAE5;
+    color: #009966;
+}
+.display-wrapper .contact-card-bg
+{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+}
+.display-wrapper .other-Grop-friends
+{
+    background-color: #D0FAE5;
+    color :#4D8258;
+}
+.display-wrapper .other-Grop-school
+{
+    background-color: #FEF3C6;
+    color :#C14D20;
+}
+
+.display-wrapper .other-Grop-other
+{
+    background-color: #F3F4F6;
+    color :#4D5162;
+}
+
+.display-wrapper .other-Grop-family
+{
+    background-color: #DBEAFE;
+    color :#1447E9;
+}
+
+.display-wrapper .other-Grop-work
+{
+    background-color: #F3E8FF;
+      color: #7F22FE;
+}
+
+.display-wrapper .Emergency-Grop
+{
+    background-color: #FFF1F2;
+    color :#F20034;
+}
+.display-wrapper .contact-hr-call a
+{
+     background-color: #D0FAE5;
+    color: #009966;
+}
+
+.display-wrapper .contact-hr-gmail a
+{
+      background-color: #EDE9FE;
+    color: #7F22FE;
+}
+
+.border-n{
+    border:none;
+}
+
+
+.hov1
+{
+    background-color: transparent;
+    color: gray;
+    transition: all 0.5s ease;
+}
+.hov1:hover
+{
+    background-color: #F3F4F6;
+    color: #FFB900;
+    cursor: pointer;
+    
+}
+
+
+.hov2
+{
+      background-color: #FFFBEB;
+    color: #FFB900;
+    transition: all 0.5s ease;
+}
+.hov2:hover
+{
+    background-color: #FEF3C6;
+    cursor: pointer;
+    
+}
+
+
+.hov3
+{
+    background-color: transparent;
+    color: gray;
+    transition: all 0.5s ease;
+}
+.hov3:hover
+{
+    background-color: #F3F4F6;
+    color: #F20034;
+    cursor: pointer;
+    
+}
+ 
+.hov4
+{
+      background-color: #FFE4E6;
+   color: #F20034;
+    transition: all 0.5s ease;
+}
+.hov4:hover
+{
+  background-color :#FFF1F2;
+    cursor: pointer;
+    
+}
+
+.hov5
+{
+    background-color: transparent;
+    color: gray;
+    transition: all 0.5s ease;
+}
+.hov5:hover
+{
+    background-color: #EEF2FF;
+    color: #4F39F6;
+    cursor: pointer;
+    
+}
+
+
+.hov6
+{
+    background-color: transparent;
+    color: gray;
+    transition: all 0.5s ease;
+}
+.hov6:hover
+{
+    background-color: #FFF1F2;
+    color: #F20034;
+    cursor: pointer;
+    
+}
+
+/*modal*/
+
+#change-photo-btn {
+    display: inline-block; 
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #343a40; 
+    cursor: pointer; 
+}
+
+#change-photo-btn:hover {
+    background-color: #f8f9fa ;
+}
+
+
+
+#modalHeaderNoBorder {
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+#closeButtonMargin {
+    margin: 0;
+}
+
+#modalBodyPaddingTop {
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.font-weight-bold-custom {
+    font-weight: bold;
+}
+
+.text-danger-custom {
+    color: red;
+}
+
+#profile-picture-container {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #3f86e4; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#profileIconStyle {
+    font-size: 50px;
+    color: white; 
+}
+#change-photo-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #343a40; 
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+#change-photo-input
+{
+  visibility: hidden;
+  inset: 0px;
+}
+
+#change-photo-btn:hover {
+    background-color: #f8f9fa ;
+}
+
+#addContactModal .modal-content {
+    border-top-left-radius: 15px ; 
+    border-top-right-radius: 15px ; 
+}
+
+#addContactModal .form-control, 
+#addContactModal #groupSelectInput {
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    padding: 12px 15px; 
+    font-size: 15px;
+    height: auto; 
+}
+
+#addContactModal .form-control::placeholder, 
+#addContactModal #noteTextarea::placeholder {
+    color: #a0a0a0; 
+}
+
+
+.checkbox-label-custom {
+    font-size: 15px;
+    color: #495057; 
+}
+
+.favorite-icon {
+    color: #FFC107;
+    margin-right: 5px;
+}
+.emergency-icon {
+    color: #DC3545;
+    margin-right: 5px;
+}
+
+#footer-full-width-btns {
+    border-top: none;
+    padding: 15px 1.5rem; 
+}
+
+#footer-full-width-btns .btn {
+    border-radius: 8px; 
+}
+
+
+
+
+#addContactModal .modal-body {
+    padding: 5px 15px ;
+}
+
+
+.modal-footer {
+ 
+  background-color:white;
+  border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+ 
+}
