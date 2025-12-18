@@ -59,9 +59,11 @@ function setFormToAddContact()
     }
   } 
 
-// ~addProduct
+// ~addcontacts
 function AddContact() {
-if (
+if (canAddContact()) 
+  {
+  if (
     validation(nameInput) &&
     validation(phoneInput) &&
     validation(emailInput) &&
@@ -145,7 +147,7 @@ else {
       };
       //   ~ push the product object inside the array
       allContacts.push(newContact);
-      console.log(allContacts);
+      
       
       //   ~ display the products as a ui
       displayContacts();
@@ -178,7 +180,7 @@ else {
     };
     //   ~ push the product object inside the array
     allContacts.push(newContact);
-    console.log(allContacts);
+  
 
     //   ~ display the products as a ui
     displayContacts();
@@ -210,10 +212,19 @@ else {
   
 });
   }
+}
+
+else {
+  Swal.fire({
+  icon: "error",
+  title: "Duplicate...",
+  text: "Contact with this phone number already exists!", 
+});
+}
   
 }
 
-// ~displayProducts
+// ~displaycontacts
 function displayContacts(Arr=allContacts) {
 
 totalLengh()
@@ -448,7 +459,7 @@ addContactModalLabel.innerText = "Edit Contact Contact"
    Addbtn.classList.replace("d-block", "d-none");
 }
 
-// ~ update Product
+// ~ update contact
 
 function updateContact() {
 if ( validation(nameInput) &&
@@ -528,7 +539,7 @@ if (contactTobeUpdated.has_image) {
 
 
 
-    console.log(allContacts);
+   
     displayContacts();
     saveIntoLocalStorage();
     displayOutOfStockFavorite()
@@ -587,7 +598,7 @@ else {
      contactTobeUpdated.groupSelectup=groupSelectCartona.value
       contactTobeUpdated.has_image = true
 
-    console.log(allContacts);
+   
     displayContacts();
     saveIntoLocalStorage();
       displayOutOfStockFavorite()
@@ -667,7 +678,7 @@ function search(value){
       
      
   })
-   console.log(searchedContacts);
+
    displayContacts(searchedContacts)
 }
 
@@ -722,7 +733,7 @@ function displayOutOfStockFavorite()
   var favoriteContacts = allContacts.filter(function(contact){
     return contact.favoriteCheck == true
   })
-  console.log(favoriteContacts);
+ 
 
 
 
@@ -779,7 +790,7 @@ function displayOutOfStockEmergency()
   var EmergencyContacts = allContacts.filter(function(contact){
     return contact.emergencyCheck == true
   })
-  console.log(EmergencyContacts);
+  
   var htmlMarkup = "";
 
   if(EmergencyContacts.length==0)
@@ -842,8 +853,6 @@ function validation(element) {
     noteTextareaInput: /^([a-z]{2}[\w\s.,-]{0,97}$)|(^$)/i,
   };
 
-console.log(element.id);
-
 
   if (regex[element.id].test(element.value)) {
     element.classList.add("is-valid");
@@ -856,4 +865,15 @@ console.log(element.id);
     element.nextElementSibling.classList.remove("d-none");
     return false;
   }
+}
+
+function canAddContact(){
+var currentPhone = phoneInput.value.trim();
+  
+  var canAdd = allContacts.filter(function(contact) {
+    return contact.phone.trim() === currentPhone;
+  });
+
+  console.log("Is phone unique?", canAdd.length === 0);
+  return canAdd.length === 0;
 }
