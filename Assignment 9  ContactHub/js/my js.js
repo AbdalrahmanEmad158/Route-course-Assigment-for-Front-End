@@ -811,7 +811,7 @@ function displayOutOfStockEmergency()
                     <div class="d-flex align-items-center">
 
 
-                      <div class="d-flex justify-content-center align-items-center  Favorites-side-icon-left  text-light">
+                      <div class="d-flex justify-content-center align-items-center  Emergency-side-icon-left  text-light">
                            ${EmergencyContacts[i].has_image ? `<img src="${EmergencyContacts[i].image}" alt="" class="imagee">` 
                  : `<p>${EmergencyContacts[i].image}</p>`}
                       </div>
