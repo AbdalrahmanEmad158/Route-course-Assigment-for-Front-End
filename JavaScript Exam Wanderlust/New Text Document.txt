@@ -1,0 +1,173 @@
+// 1. المتغيرات العامة والبيانات الأساسية
+const EXCHANGE_KEY = '805842951e5953ad31497176';
+const TICKETMASTER_KEY = 'VwECw2OiAzxVzIqnwmKJUG41FbeXJk1y';
+
+let selectedCountryCode = 'EG';
+let selectedCity = 'Cairo';
+let savedPlans = JSON.parse(localStorage.getItem('wanderlust_plans')) || [];
+
+// 2. عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    loadCountries();
+    renderPlans();
+    setupNavigation();
+});
+
+// 3. وظيفة التنقل البسيطة (إظهار وإخفاء السكاشن)
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const views = document.querySelectorAll('.view');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetViewId = link.getAttribute('data-view') + '-view';
+
+            // إخفاء كل السكاشن
+            views.forEach(v => v.classList.remove('active'));
+            // إظهار السكشن المختار
+            document.getElementById(targetViewId).classList.add('active');
+            
+            // تحديث شكل الزر النشط في القائمة
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+}
+
+// 4. جلب البلاد ووضعها في القائمة المخصصة
+async function loadCountries() {
+    const countryList = document.getElementById('country-options-list');
+    const trigger = document.getElementById('country-select-trigger');
+
+    try {
+        const res = await fetch('https://date.nager.at/api/v3/AvailableCountries');
+        const countries = await res.json();
+
+        countryList.innerHTML = countries.map(c => `
+            <li class="simple-select-option" onclick="selectCountry('${c.countryCode}', '${c.name}')">
+                <span class="option-text">${c.name}</span>
+            </li>
+        `).join('');
+
+        trigger.addEventListener('click', () => {
+            countryList.parentElement.classList.toggle('hidden');
+        });
+    } catch (err) { console.error("Error loading countries", err); }
+}
+
+function selectCountry(code, name) {
+    selectedCountryCode = code;
+    document.getElementById('selected-country-name').innerText = name;
+    document.getElementById('country-options-list').parentElement.classList.add('hidden');
+}
+
+// 5. زر البحث الرئيسي (Explore)
+const exploreBtn = document.querySelector('.btn-explore');
+if (exploreBtn) {
+    exploreBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        selectedCity = document.querySelector('input[placeholder="Enter city name..."]').value || 'Cairo';
+        
+        showLoading(true);
+        await Promise.all([
+            fetchCountryStats(),
+            fetchWeather(),
+            fetchHolidays(),
+            fetchEvents()
+        ]);
+        showLoading(false);
+        
+        Swal.fire({ icon: 'success', title: 'تم تحديث البيانات!', timer: 1500, showConfirmButton: false });
+    });
+}
+
+// 6. وظائف جلب البيانات من الـ APIs
+async function fetchCountryStats() {
+    const res = await fetch(`https://restcountries.com/v3.1/alpha/${selectedCountryCode}`);
+    const [data] = await res.json();
+    document.getElementById('dashboard-country-flag').src = data.flags.svg;
+    document.getElementById('stat-population').innerText = (data.population / 1000000).toFixed(1) + 'M';
+    document.getElementById('stat-currency').innerText = Object.keys(data.currencies)[0];
+    document.querySelectorAll('.current-country-name').forEach(el => el.innerText = data.name.common);
+}
+
+async function fetchWeather() {
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=30.0&longitude=31.0&current=temperature_2m`);
+    const data = await res.json();
+    document.getElementById('current-temp-value').innerText = Math.round(data.current.temperature_2m);
+}
+
+async function fetchHolidays() {
+    const res = await fetch(`https://date.nager.at/api/v3/PublicHolidays/2026/${selectedCountryCode}`);
+    const data = await res.json();
+    document.getElementById('holidays-grid').innerHTML = data.slice(0, 10).map(h => `
+        <div class="holiday-card">
+            <h4>${h.name}</h4>
+            <p>${h.date}</p>
+            <button class="btn-primary" onclick="saveToPlans('${h.name}', '${h.date}', 'holiday')">Save</button>
+        </div>
+    `).join('');
+}
+
+async function fetchEvents() {
+    const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TICKETMASTER_KEY}&city=${selectedCity}`);
+    const data = await res.json();
+    const events = data._embedded?.events || [];
+    document.getElementById('events-grid').innerHTML = events.map(e => `
+        <div class="event-card">
+            <img src="${e.images[0].url}" style="width:100%; height:100px; object-fit:cover; border-radius:8px;">
+            <h5>${e.name}</h5>
+            <button class="btn-primary" onclick="saveToPlans('${e.name}', '${e.dates.start.localDate}', 'event')">Save</button>
+        </div>
+    `).join('');
+}
+
+// 7. نظام الحفظ في My Plans
+function saveToPlans(title, date, type) {
+    const item = { id: Date.now(), title, date, type };
+    savedPlans.push(item);
+    localStorage.setItem('wanderlust_plans', JSON.stringify(savedPlans));
+    renderPlans();
+    Swal.fire({ icon: 'success', title: 'تم الحفظ في خططك', toast: true, position: 'bottom-end', timer: 2000 });
+}
+
+function renderPlans() {
+    const container = document.getElementById('plans-content');
+    if (!container) return;
+    
+    if (savedPlans.length === 0) {
+        container.innerHTML = '<p class="text-center">لا توجد خطط محفوظة.</p>';
+        return;
+    }
+
+    container.innerHTML = savedPlans.map(p => `
+        <div class="plan-card">
+            <div class="plan-card-type ${p.type}">${p.type}</div>
+            <h4>${p.title}</h4>
+            <p>${p.date}</p>
+            <button class="btn-delete" onclick="deletePlan(${p.id})">Remove</button>
+        </div>
+    `).join('');
+}
+
+function deletePlan(id) {
+    savedPlans = savedPlans.filter(p => p.id !== id);
+    localStorage.setItem('wanderlust_plans', JSON.stringify(savedPlans));
+    renderPlans();
+}
+
+// 8. تحويل العملات
+document.getElementById('convert-btn')?.addEventListener('click', async () => {
+    const amount = document.getElementById('convert-amount').value;
+    const from = document.getElementById('from-currency').value;
+    const to = document.getElementById('to-currency').value;
+
+    const res = await fetch(`https://v6.exchangerate-api.com/v6/${EXCHANGE_KEY}/pair/${from}/${to}/${amount}`);
+    const data = await res.json();
+    document.getElementById('convert-result').innerText = `${amount} ${from} = ${data.conversion_result.toFixed(2)} ${to}`;
+});
+
+function showLoading(show) {
+    document.getElementById('loading-overlay').classList.toggle('hidden', !show);
+}
