@@ -14,6 +14,7 @@ let current_datetime =document.getElementById("current-datetime");
 let stat_holidays = document.getElementById("stat-holidays");
 let stat_events = document.getElementById("stat-events");
 let stat_saved = document.getElementById("stat-saved");
+var holidays_events_longweekends = JSON.parse(localStorage.getItem("allCards")) || [];;
 
 
  // End of variables
@@ -102,10 +103,10 @@ async function getAllCity(countryCode,selectedCountryname) {
     current_city = cites[0].capital[0];
 }
 
-async function global_search_btnF()
+async function global_search_btnF(hamada=1)
 {
-
-    console.log(cites);
+  if (hamada==1) {
+     console.log(cites);
     console.log(cites[0].capitalInfo.latlng[0]);
     console.log(cites[0].capitalInfo.latlng[0]);
    if (cites[0].borders)
@@ -255,9 +256,17 @@ setInterval(() => {
         getAllCity(selectedCountryCode,selectedCountryname);
     });
   });*/  ;
+  }
+  else{
+
+  }
+   
 }
 
-global_search_btn.addEventListener("click",global_search_btnF); 
+global_search_btn.addEventListener("click",function(){
+      global_search_btnF(); 
+}
+)
 
 // End of Dashboard
 
@@ -283,14 +292,30 @@ asideLinks.forEach(link => {
     }
 
      else if (targetId=="events-view") {
-        loadEvents(4);
+        if (cites) {
+          loadEvents(4);
     }
+    else{
+        page_title.innerText = "Events";
+  //page_subtitle.innerText = `Explore exciting events happening in ${current_city}, ${global_country.options[global_country.selectedIndex].text}. From concerts to festivals, discover what's on and plan your visit accordingly!`;
+  page_subtitle.innerText = `Find concerts, sports, and entertainment`;
+       document.getElementById("loading-overlay").classList.remove("hidden");
+         setTimeout(() => {
+            document.getElementById("loading-overlay").classList.add("hidden");
+          }, 500);
+         document.getElementById("events-content").innerHTML = " `<p class = \"d-flex justify-content-center align-item-center\">please select country from DashBord .</p>`"    
+}
+  }
+
 
      else if (targetId=="weather-view") {
       if (cites) {
          loadWeather(cites[0].capitalInfo.latlng[0],cites[0].capitalInfo.latlng[1],current_city);
       }
       else{
+          page_title.innerText = "Weather";
+  //page_subtitle.innerText = `Get the latest weather updates for ${cityName}, ${global_country.options[global_country.selectedIndex].text}. Stay informed about current conditions, forecasts, and more to plan your day effectively!`;
+page_subtitle.innerText = `Check forecasts for any destination`
          document.getElementById("loading-overlay").classList.remove("hidden");
          setTimeout(() => {
             document.getElementById("loading-overlay").classList.add("hidden");
@@ -316,12 +341,15 @@ asideLinks.forEach(link => {
          loadSun_Times(cites[0].capitalInfo.latlng[0],cites[0].capitalInfo.latlng[1],today);
       }
       else{
-        
+          page_title.innerText = "Sun Times";
+ //page_subtitle.innerText = `Discover sunrise and sunset times for ${current_city}, ${global_country.options[global_country.selectedIndex].text}. Plan your outdoor activities around these beautiful moments of the day!`;
+ page_subtitle.innerText = `Check sunrise and sunset times worldwide`;  
+ 
          document.getElementById("loading-overlay").classList.remove("hidden");
          setTimeout(() => {
             document.getElementById("loading-overlay").classList.add("hidden");
           }, 500);
-         document.getElementById("sun-times-view").innerHTML = " `<p class = \"d-flex justify-content-center align-item-center\">please select country from DashBord .</p>`"
+         document.getElementById("sun-times-content").innerHTML = " `<p class = \"d-flex justify-content-center align-item-center\">please select country from DashBord .</p>`"
       }
        
     }
@@ -373,7 +401,7 @@ asideLinks.forEach(link => {
     else
     {
       stat_holidays.innerText = 0;
-        cartona = `<p class = "d-flex justify-content-center align-item-center">No holidays found for this location.</p>`;
+        cartona = `<p class = "d-flex justify-content-center align-item-center">Select a country from the dashboard to explore public holidays.</p>`;
     }
     document.getElementById("loading-overlay").classList.add("hidden");
      document.getElementById("holidays-content").innerHTML = cartona;
@@ -422,7 +450,7 @@ async function loadEvents(size) {
     else {
         document.getElementById("events-content").innerHTML = `<p class = "d-flex justify-content-center align-item-center">No events found for this location.</p>`;
     }
-    
+    console.log("aloooo");
     document.getElementById("loading-overlay").classList.add("hidden");
    
 }
@@ -818,6 +846,7 @@ async function loadSun_Times(lat, lon,today) {
   page_title.innerText = "Sun Times";
  //page_subtitle.innerText = `Discover sunrise and sunset times for ${current_city}, ${global_country.options[global_country.selectedIndex].text}. Plan your outdoor activities around these beautiful moments of the day!`;
  page_subtitle.innerText = `Check sunrise and sunset times worldwide`;  
+ 
  console.log("Loading sun times...");
 
     let response = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&date=${today}&formatted=0`);
