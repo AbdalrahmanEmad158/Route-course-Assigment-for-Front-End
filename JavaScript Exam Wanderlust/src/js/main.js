@@ -15,7 +15,8 @@ let stat_holidays = document.getElementById("stat-holidays");
 let stat_events = document.getElementById("stat-events");
 let stat_saved = document.getElementById("stat-saved");
 var holidays_events_longweekends = JSON.parse(localStorage.getItem("allCards")) || [];;
-
+var holidays_events_longweekends_class= document.querySelectorAll(".holidays_events_longweekends");
+var filter_holiday_count = document.getElementById("filter-holiday-count"); 
 
  // End of variables
 console.log(asideLinks);
@@ -385,7 +386,11 @@ page_subtitle.innerText = `Check forecasts for any destination`
         <div class="holiday-card">
               <div class="holiday-card-header">
                 <div class="holiday-date-box"><span class="day">7</span><span class="month">Jan</span></div>
-                <button class="holiday-action-btn"><i class="fa-regular fa-heart"></i></button>
+              <button class="holiday-action-btn">
+    <i class="fa-regular fa-heart holidays_events_longweekends" 
+       onclick="toggleFavorite(this, {localName: '${holidays[index].localName.replace(/'/g, "\\'")}', name: '${holidays[index].name.replace(/'/g, "\\'")}'})">
+    </i>
+</button>
               </div>
               <h3>${holidays[index].localName}</h3>
               <p class="holiday-name">${holidays[index].name}</p>
@@ -403,6 +408,7 @@ page_subtitle.innerText = `Check forecasts for any destination`
       stat_holidays.innerText = 0;
         cartona = `<p class = "d-flex justify-content-center align-item-center">Select a country from the dashboard to explore public holidays.</p>`;
     }
+    console.log("aaa")
     document.getElementById("loading-overlay").classList.add("hidden");
      document.getElementById("holidays-content").innerHTML = cartona;
    
@@ -430,7 +436,7 @@ async function loadEvents(size) {
               <div class="event-card-image">
                 <img src="${events._embedded.events[index].images[0].url}" alt="Jazz Night">
                 <span class="event-card-category">${events._embedded.events[index].type}</span>
-                <button class="event-card-save"><i class="fa-regular fa-heart"></i></button>
+                <button class="event-card-save"><i class="fa-regular fa-heart holidays_events_longweekends"></i></button>
               </div>
               <div class="event-card-body">
                 <h3>${events._embedded.events[index].name}</h3>
@@ -743,7 +749,7 @@ function displayLongWeekends(holidaysArray) {
             <div class="lw-card">
               <div class="lw-card-header">
                 <span class="lw-badge"><i class="fa-solid fa-calendar-days"></i> ${holiday.dayCount} Days</span>
-                <button class="holiday-action-btn"><i class="fa-regular fa-heart"></i></button>
+                <button class="holiday-action-btn"><i class="fa-regular fa-heart holidays_events_longweekends"></i></button>
               </div>
               <h3>Long Weekend #${index + 1}</h3>
               <div class="lw-dates"><i class="fa-regular fa-calendar"></i> ${dateRange}</div>
@@ -875,7 +881,7 @@ function formatSunTime(isoString) {
 
 
 
-// إذا أردت حساب طول النهار بالساعات
+
 const hours = Math.floor(sunData.day_length / 3600);
 const minutes = Math.floor((sunData.day_length % 3600) / 60);
 const dayLength = `${hours}h ${minutes}m`;
@@ -982,11 +988,128 @@ console.log(formattedDate);
 // End of loadSun_Times
 
 
-async function loadMy_plans() {
-  page_title.innerText = "My Plans";
-  //page_subtitle.innerText = `Manage your travel plans and itineraries in one place. Keep track of your destinations, accommodations, and activities for a seamless travel experience!`;
-  page_subtitle.innerText = `Your saved holidays and events`;  
-  console.log("Loading my plans...");
+function toggleFavorite(element, itemData) {
+  console.log("Toggling favorite for:", itemData);
+    element.classList.toggle('active-heart');
     
+    if (element.classList.contains('active-heart')) {
+        element.style.color = 'red';
+      console.log("Adding to favorites:", itemData);
+        holidays_events_longweekends.push(itemData);
+    } else {
+        element.style.color = 'inherit'; 
+        console.log("remove to favorites:", itemData);
+        holidays_events_longweekends = holidays_events_longweekends.filter(item => item.name !== itemData.name);
+    }
+
+   
+    localStorage.setItem("allCards", JSON.stringify(holidays_events_longweekends));
+    console.log(holidays_events_longweekends);
+    
+   
+    updateStats();
 }
 
+
+function updateStats() {
+    if (stat_saved) {
+        stat_saved.innerText = holidays_events_longweekends.length;
+    }
+
+}
+
+async function loadMy_plans() {
+    page_title.innerText = "My Plans";
+    page_subtitle.innerText = `Manage your saved travel highlights`;
+    
+    let container = document.getElementById("plans-content");
+    
+   
+    if (holidays_events_longweekends.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fa-solid fa-heart-crack"></i></div>
+                <h3>No Saved Plans Yet</h3>
+                <p>Start exploring and save items you like!</p>
+            </div>`;
+        return;
+    }
+
+    let cartona = `
+       
+        <div class="plans-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 2fr)); gap: 20px;">
+    `;
+
+    holidays_events_longweekends.forEach((item, index) => {
+        cartona += `
+            <div class="holiday-card">
+                <div class="holiday-card-header">
+                    <div class="holiday-date-box">
+                        <span class="day">${index + 1}</span>
+                        <span class="month">SAVED</span>
+                    </div>
+                    <button class="holiday-action-btn" >
+                        <i class="fa-solid fa-heart" style="color: red;"></i>
+                    </button>
+                </div>
+                <h3>${item.localName || item.name}</h3>
+                <p class="holiday-name">${item.name}</p>
+                <div class="holiday-card-footer">
+                    <span class="holiday-type-badge">Saved Item</span>
+                    <button onclick="removeFromPlans('${item.name}')" style="background:none; border:none; color:#ff4d4d; cursor:pointer;">
+                        <i class="fa-solid fa-circle-xmark"></i> Remove
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    cartona += `</div>`;
+    container.innerHTML = cartona;
+}
+
+
+function removeFromPlans(itemName) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to remove this from your plans?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            holidays_events_longweekends = holidays_events_longweekends.filter(item => item.name !== itemName);
+            localStorage.setItem("allCards", JSON.stringify(holidays_events_longweekends));
+            
+            
+            if (stat_saved) stat_saved.innerText = holidays_events_longweekends.length;
+            loadMy_plans(); 
+            
+            Swal.fire('Deleted!', 'Item has been removed.', 'success');
+        }
+    });
+}
+
+
+function clearAllPlans() {
+    Swal.fire({
+        title: 'Clear All Plans?',
+        text: "This will remove everything you have saved!",
+        icon: 'danger',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, clear all',
+        confirmButtonColor: '#ff4d4d'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            holidays_events_longweekends = [];
+            localStorage.setItem("allCards", JSON.stringify(holidays_events_longweekends));
+            
+            if (stat_saved) stat_saved.innerText = 0;
+            loadMy_plans();
+            
+            Swal.fire('Cleared!', 'Your plans are empty.', 'success');
+        }
+    });
+}
