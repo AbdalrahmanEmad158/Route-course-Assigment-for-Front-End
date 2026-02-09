@@ -86,7 +86,7 @@ const  finalfilteredPosts = filteredPosts.slice((currentPagePagination-1)*6,curr
   <div className={`grid ${display === "grid" ? "grid-cols-1 md:grid-cols-3 gap-6" : "grid-cols-1 gap-4"}`}>
     {finalfilteredPosts.length > 0 ? (
       finalfilteredPosts.map((item) => (
-       <Link to={`${item.id}`}>
+       <Link to={`/blog/${item.id}`}>
 
         <React.Fragment key={item.id}>
           {display === "grid" ? (

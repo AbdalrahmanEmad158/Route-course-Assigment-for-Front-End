@@ -8,6 +8,7 @@ import About from './pages/About/About.jsx'
 import Layout from './componants/Layot/Layout.jsx'
 import Blog from './pages/Blog/Blog.jsx'
 import BlogDetails from './pages/BlogDetails/BlogDetails.jsx'
+import NotFound from './pages/NotFound/NotFound.jsx'
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     {path:'about', element:<About/>},
     {path:'blog', element:<Blog/>},
     {path:'blog/:id', element:<BlogDetails/>},
-    {path:'*', element:<h1>404 Not Found</h1>},
+    {path:'*', element:<NotFound/>},
   ]}
   ])
 
