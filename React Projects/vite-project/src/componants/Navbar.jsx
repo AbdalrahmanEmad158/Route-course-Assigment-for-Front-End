@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+let loc =  useLocation()
+console.log(loc)
   // تأثير لتغيير خلفية الـ Navbar عند السكرول (مثل المواقع الاحترافية)
   useEffect(() => {
     const handleScroll = () => {

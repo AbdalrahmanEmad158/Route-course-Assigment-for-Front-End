@@ -18,6 +18,36 @@ var holidays_events_longweekends = JSON.parse(localStorage.getItem("allCards")) 
 var holidays_events_longweekends_class= document.querySelectorAll(".holidays_events_longweekends");
 var filter_holiday_count = document.getElementById("filter-holiday-count"); 
 
+// الوصول للعناصر المطلوبة
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const sidebar = document.getElementById("sidebar");
+const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+// وظيفة لفتح/إغلاق القائمة
+function toggleSidebar() {
+    sidebar.classList.toggle("open"); // سنضيف كلاس open في CSS لاحقاً
+    sidebarOverlay.classList.toggle("hidden");
+}
+
+// تشغيل الوظيفة عند الضغط على أيقونة الـ Menu
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", toggleSidebar);
+}
+
+// إغلاق القائمة عند الضغط على الـ Overlay (الطبقة الشفافة)
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", toggleSidebar);
+}
+
+// إغلاق القائمة عند الضغط على أي رابط داخل الـ Sidebar (لتحسين تجربة المستخدم)
+asideLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth <= 1024) { // إذا كانت الشاشة صغيرة
+            toggleSidebar();
+        }
+    });
+});
+
  // End of variables
 console.log(asideLinks);
 
@@ -381,11 +411,21 @@ page_subtitle.innerText = `Check forecasts for any destination`
     if (holidays.length>0) {
       stat_holidays.innerText = holidays.length;
       for (let index = 0; index < holidays.length; index++) {
+        let dateStr = holidays[index].date;
+let dateObj = new Date(dateStr);
+
+
+let day = dateObj.getDate(); 
+
+let monthName = dateObj.toLocaleString('en-US', { month: 'long' });
+
+console.log(`اليوم: ${day}, الشهر: ${monthName}`); 
+
         
         cartona += `
         <div class="holiday-card">
               <div class="holiday-card-header">
-                <div class="holiday-date-box"><span class="day">7</span><span class="month">Jan</span></div>
+                <div class="holiday-date-box"><span class="day">${day}</span><span class="month">${monthName}</span></div>
               <button class="holiday-action-btn">
     <i class="fa-regular fa-heart holidays_events_longweekends" 
        onclick="toggleFavorite(this, {localName: '${holidays[index].localName.replace(/'/g, "\\'")}', name: '${holidays[index].name.replace(/'/g, "\\'")}'})">

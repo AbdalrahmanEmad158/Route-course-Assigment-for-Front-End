@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div>
-      hello from about page
+     <div className="pt-20">
+     
+      hello from About page
+     
     </div>
   )
 }
