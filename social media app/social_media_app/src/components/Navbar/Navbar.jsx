@@ -13,15 +13,31 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 export default  function AppNavbar() {
+  const {token,setToken,UserData} = useContext(AuthContext)
+  const {name , email } = UserData /* user data become from Api   
+  in first it is undifiend and we can not destruct this const {name , email } from it */
+    || {}  // return first true . , const{} =  truthy value
+    console.log(UserData)
+  function logOut()
+  {
+    localStorage.removeItem("token")
+    setToken(null)
+      setTimeout(() => {
+        navigate('/Login'); 
+      }, 500);
+  }
   return (
     <Navbar fluid rounded>
       <NavbarBrand href="https://flowbite-react.com">
         <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
       </NavbarBrand>
-      <div className="flex md:order-2">
+      {token && <div className="flex md:order-2">
         <Dropdown
           arrowIcon={false}
           inline
@@ -30,30 +46,35 @@ export default  function AppNavbar() {
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm">{name}</span>
+            <span className="block truncate text-sm font-medium">{email}</span>
           </DropdownHeader>
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
           <DropdownItem>Earnings</DropdownItem>
           <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
+          <DropdownItem onClick={logOut}>Sign out</DropdownItem>
         </Dropdown>
         <NavbarToggle />
-      </div>
+      </div>}
       <NavbarCollapse>
-        <NavbarLink as={Link} to="/" >
+      {token ? <>
+        <NavbarLink as={Link} to="/" active >
           Posts
         </NavbarLink>
         <NavbarLink as={Link} to="/profile">
           Profile
-        </NavbarLink>
-         <NavbarLink as={Link} to="/Register">
+        </NavbarLink></> :
+         <>
+           <NavbarLink as={Link} to="/Register">
           Register
         </NavbarLink>
          <NavbarLink as={Link} to="/login">
           Login
         </NavbarLink>
+         </>}
+      
+       
       
       </NavbarCollapse>
     </Navbar>

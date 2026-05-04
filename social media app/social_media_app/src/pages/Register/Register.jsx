@@ -17,7 +17,7 @@ export default function Register() {
   const {register,handleSubmit,formState: { errors }} = useForm(
     {
          mode:'onsubmit',
-      resolver : zodResolver(RegistritionScehma),
+     /* Schema for validation */ resolver : zodResolver(RegistritionScehma),
       defaultValues:{
         name:'',
         email:'',
@@ -42,7 +42,11 @@ export default function Register() {
       if (response.data.message === "success") {
        // alert("Account Created Successfully!");
         setMsg(response.data.message)
-        navigate('/Login')
+        
+
+         setTimeout(() => {
+       navigate('/Login')
+      }, 500);
       }
     } catch (error) {
     
@@ -120,7 +124,7 @@ export default function Register() {
       </div>
 
 
-      <Button type="submit">
+      <Button type="submit" disabled={loadingBtn}>
        
     {loadingBtn ? <><Spinner className='me-2' aria-label="Default status example" /> looding...</>: 'submit'}
       </Button>

@@ -7,12 +7,16 @@ import axios from 'axios'
 import { loginScehma, RegistritionScehma } from '../../Schemas/AuthSchemas';
 import AppAlert from '../../components/AppAlert/AppAlert';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../components/Context/AuthContext';
 
 
 export default function Login() {
   const navigate = useNavigate()
   const [msg , setMsg] = useState()
   const [loadingBtn , setLoadingBtn] = useState(false)
+const {setToken} = useContext(AuthContext)
+
   const {register,handleSubmit,formState: { errors }} = useForm(
     {
          mode:'onsubmit',
@@ -38,6 +42,8 @@ export default function Login() {
        // alert("Login Successfully!");
         setMsg(response.data.message)
         localStorage.setItem('token',response.data.token)
+        setToken(response.data.token)
+
         setTimeout(() => {
         navigate('/'); 
       }, 500);
@@ -81,7 +87,7 @@ export default function Login() {
       </div>
          {errors.password && <AppAlert color = {'failure'} content = {errors.password.message}/>}
 
-      <Button type="submit">
+      <Button type="submit" disabled={loadingBtn}>
        
     {loadingBtn ? <><Spinner className='me-2' aria-label="Default status example" /> looding...</>: 'submit'}
       </Button>

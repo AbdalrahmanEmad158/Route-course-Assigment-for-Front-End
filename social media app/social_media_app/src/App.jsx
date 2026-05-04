@@ -10,7 +10,11 @@ import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import AuthGuards from './Guards/AuthGuards'
 import PostsGuards from './Guards/PostsGuards'
+import AuthContextProvider from './components/Context/AuthContext';
+import { QueryClient,QueryClientProvider } from '@tanstack/react-query'
 
+
+const queryClient = new QueryClient()
 function App() {
 
  const routes = createBrowserRouter([
@@ -18,14 +22,18 @@ function App() {
        { index:true , element:<PostsGuards> <Posts/> </PostsGuards>},
       { path:'Login' , element:<AuthGuards> <Login/> </AuthGuards>},
       { path:'Register' , element:<AuthGuards><Register/></AuthGuards>},
-       { path:'Profile' , element:<Profile/>},
+       { path:'Profile' , element:<PostsGuards> <Profile/> </PostsGuards>},
         ]}
      ])
 
   return (
     <>
-    <RouterProvider router={routes}/>
 
+ <QueryClientProvider client={queryClient}>
+    <AuthContextProvider>
+       <RouterProvider router={routes}/>
+    </AuthContextProvider>
+</QueryClientProvider>
     </>
   )
 }
