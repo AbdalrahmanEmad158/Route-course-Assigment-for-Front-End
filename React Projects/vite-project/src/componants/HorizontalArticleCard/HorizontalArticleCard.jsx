@@ -26,7 +26,7 @@ export default function HorizontalArticleCard({item}) {
                 </div>
                 <img src={item.author.avatar} alt={item.author.name} className="w-10 h-10 rounded-full object-cover border border-gray-700" />
             </div>
-             <button className="text-orange-500 font-bold flex items-center gap-2 group-hover:text-white group-hover:translatex-20 transition">
+             <button className=" font-bold flex items-center gap-2 group-hover:text-orange-500 group-hover:translatex-20 transition">
                اقرأ المقال ←
             </button>
         </div>

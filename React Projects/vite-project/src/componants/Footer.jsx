@@ -173,7 +173,7 @@ export default function Footer() {
           <input type="email" className="w-full px-4 py-3 bg-[#161616] border border-[#262626] rounded-xl text-sm text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-300 placeholder-neutral-600"
           placeholder='أدخل بريدك الإلكتروني'/>
         </div>
-        <button className='w-full bg-orange-500 text-sm p-5 rounded-full' type="submit">اشترك</button>
+        <button className='w-full bg-orange-500 text-sm p-5 rounded-full cursor-pointer' type="submit">اشترك</button>
       </form>
 </div>
 
