@@ -18,31 +18,30 @@ var holidays_events_longweekends = JSON.parse(localStorage.getItem("allCards")) 
 var holidays_events_longweekends_class= document.querySelectorAll(".holidays_events_longweekends");
 var filter_holiday_count = document.getElementById("filter-holiday-count"); 
 
-// الوصول للعناصر المطلوبة
+
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const sidebar = document.getElementById("sidebar");
 const sidebarOverlay = document.getElementById("sidebar-overlay");
 
-// وظيفة لفتح/إغلاق القائمة
+
 function toggleSidebar() {
-    sidebar.classList.toggle("open"); // سنضيف كلاس open في CSS لاحقاً
+    sidebar.classList.toggle("open"); 
     sidebarOverlay.classList.toggle("hidden");
 }
 
-// تشغيل الوظيفة عند الضغط على أيقونة الـ Menu
+
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener("click", toggleSidebar);
 }
 
-// إغلاق القائمة عند الضغط على الـ Overlay (الطبقة الشفافة)
 if (sidebarOverlay) {
     sidebarOverlay.addEventListener("click", toggleSidebar);
 }
 
-// إغلاق القائمة عند الضغط على أي رابط داخل الـ Sidebar (لتحسين تجربة المستخدم)
+
 asideLinks.forEach(link => {
     link.addEventListener("click", () => {
-        if (window.innerWidth <= 1024) { // إذا كانت الشاشة صغيرة
+        if (window.innerWidth <= 1024) {
             toggleSidebar();
         }
     });
@@ -235,7 +234,7 @@ setInterval(() => {
                 <div class="dashboard-country-detail">
                   <i class="fa-solid fa-phone"></i>
                   <span class="label">Calling Code</span>
-                  <span id="Calling_Code" class="value">${cites[0].continents[0]}</span>
+                  <span id="Calling_Code" class="value">${cites[0].idd.root}${cites[0].idd.suffixes ? cites[0].idd.suffixes[0] : ''}</span>
                 </div>
                 <div class="dashboard-country-detail">
                   <i class="fa-solid fa-car"></i>
@@ -523,6 +522,46 @@ page_subtitle.innerText = `Check forecasts for any destination`
         let actualTime =localTime.toLocaleDateString('en-US', { 
         weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' 
     })
+
+
+         let hourlyHtml = '';
+        for (let i = 0; i < 24; i++) {
+            let hourTime = new Date(weather.hourly.time[i]);
+            if (hourTime.getHours>12)
+              {hourTime.getHours = hourTime.getHours - 12};
+            let hourLabel = i === 0 ? 'Now' : hourTime.getHours() + (hourTime.getHours() >= 12 ? ' PM' : ' AM');
+            let hourCode = getWeatherInfo(weather.hourly.weather_code[i]);
+            hourlyHtml += `
+                <div class="hourly-item ${i === 0 ? 'now' : ''}">
+                  <span class="hourly-time">${hourLabel}</span>
+                  <div class="hourly-icon"><i class="fa-solid ${hourCode.icon}"></i></div>
+                  <span class="hourly-temp">${Math.round(weather.hourly.temperature_2m[i])}°</span>
+                </div>`;
+        }
+
+
+
+           let forecastHtml = '';
+        let dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let todayDate = new Date();
+        
+        for (let i = 0; i < 7; i++) {
+            let forecastDate = new Date();
+            forecastDate.setDate(todayDate.getDate() + i);
+            let dayLabel = i === 0 ? 'Today' : dayNames[forecastDate.getDay()];
+            let dayNum = forecastDate.getDate();
+            let forecastCode = getWeatherInfo(weather.daily.weather_code[i]);
+            let precipitation = weather.daily.precipitation_probability_max[i] || 0;
+            
+            forecastHtml += `
+                <div class="forecast-day ${i === 0 ? 'today' : ''}">
+                  <div class="forecast-day-name"><span class="day-label">${dayLabel}</span><span class="day-date">${dayNum} ${forecastDate.toLocaleString('en-US', { month: 'short' })}</span></div>
+                  <div class="forecast-icon"><i class="fa-solid ${forecastCode.icon}"></i></div>
+                  <div class="forecast-temps"><span class="temp-max">${Math.round(weather.daily.temperature_2m_max[i])}°</span><span class="temp-min">${Math.round(weather.daily.temperature_2m_min[i])}°</span></div>
+                  <div class="forecast-precip">${precipitation > 0 ? `<i class="fa-solid fa-droplet"></i><span>${precipitation}%</span>` : ''}</div>
+                </div>`;
+        }
+
     var cartona = ` <div class="weather-hero-card ${currentCode.bgClass}">
               <div class="weather-location">
                 <i class="fa-solid fa-location-dot"></i>
@@ -594,46 +633,8 @@ page_subtitle.innerText = `Check forecasts for any destination`
             <div class="weather-section">
               <h3 class="weather-section-title"><i class="fa-solid fa-clock"></i> Hourly Forecast</h3>
               <div class="hourly-scroll">
-                <div class="hourly-item now">
-                  <span class="hourly-time">Now</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
-                  <span class="hourly-temp">22°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">10 AM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
-                  <span class="hourly-temp">23°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">11 AM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
-                  <span class="hourly-temp">24°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">12 PM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
-                  <span class="hourly-temp">25°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">1 PM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
-                  <span class="hourly-temp">25°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">2 PM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-cloud-sun"></i></div>
-                  <span class="hourly-temp">24°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">3 PM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-cloud-sun"></i></div>
-                  <span class="hourly-temp">23°</span>
-                </div>
-                <div class="hourly-item">
-                  <span class="hourly-time">4 PM</span>
-                  <div class="hourly-icon"><i class="fa-solid fa-cloud"></i></div>
-                  <span class="hourly-temp">21°</span>
-                </div>
+           
+              ${hourlyHtml}
               </div>
             </div>
             
@@ -641,48 +642,7 @@ page_subtitle.innerText = `Check forecasts for any destination`
             <div class="weather-section">
               <h3 class="weather-section-title"><i class="fa-solid fa-calendar-week"></i> 7-Day Forecast</h3>
               <div class="forecast-list">
-                <div class="forecast-day today">
-                  <div class="forecast-day-name"><span class="day-label">Today</span><span class="day-date">25 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[0]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[0]}°</span></div>
-                  <div class="forecast-precip"></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Sun</span><span class="day-date">26 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[1]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[1]}°</span></div>
-                  <div class="forecast-precip"></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Mon</span><span class="day-date">27 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-cloud-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[2]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[2]}°</span></div>
-                  <div class="forecast-precip"><i class="fa-solid fa-droplet"></i><span>10%</span></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Tue</span><span class="day-date">28 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-cloud"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[3]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[3]}°</span></div>
-                  <div class="forecast-precip"><i class="fa-solid fa-droplet"></i><span>20%</span></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Wed</span><span class="day-date">29 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[4]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[4]}°</span></div>
-                  <div class="forecast-precip"></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Thu</span><span class="day-date">30 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[5]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[5]}°</span></div>
-                  <div class="forecast-precip"></div>
-                </div>
-                <div class="forecast-day">
-                  <div class="forecast-day-name"><span class="day-label">Fri</span><span class="day-date">31 Jan</span></div>
-                  <div class="forecast-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="forecast-temps"><span class="temp-max">${weather.daily.temperature_2m_max[6]}°</span><span class="temp-min">${weather.daily.temperature_2m_min[6]}°</span></div>
-                  <div class="forecast-precip"></div>
-                </div>
+              ${forecastHtml}
               </div>
             </div>
             `
@@ -789,7 +749,11 @@ function displayLongWeekends(holidaysArray) {
             <div class="lw-card">
               <div class="lw-card-header">
                 <span class="lw-badge"><i class="fa-solid fa-calendar-days"></i> ${holiday.dayCount} Days</span>
-                <button class="holiday-action-btn"><i class="fa-regular fa-heart holidays_events_longweekends"></i></button>
+                <button class="holiday-action-btn" >
+
+            
+                
+                </button>
               </div>
               <h3>Long Weekend #${index + 1}</h3>
               <div class="lw-dates"><i class="fa-regular fa-calendar"></i> ${dateRange}</div>
